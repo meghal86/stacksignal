@@ -1,0 +1,22 @@
+{
+  "name": "@clawtrial/courtroom",
+  "version": "1.0.0",
+  "description": "AI Courtroom for behavioral oversight - monitors conversations and initiates simulated hearings",
+  "main": "skill.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "openclaw",
+    "skill",
+    "courtroom",
+    "behavioral-oversight",
+    "ai-court"
+  ],
+  "author": "ClawTrial",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/clawtrial/courtroom"
+  }
+}

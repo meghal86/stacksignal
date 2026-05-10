@@ -1,0 +1,11 @@
+{
+  "owner": "ac-pill",
+  "slug": "roast-agents",
+  "displayName": "Roast Agents",
+  "latest": {
+    "version": "1.1.0",
+    "publishedAt": 1771448533843,
+    "commit": "https://github.com/openclaw/skills/commit/5716e090b9d10b9fea911a71b027d16ecf21b122"
+  },
+  "history": []
+}

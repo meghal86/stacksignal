@@ -1,0 +1,11 @@
+{
+  "owner": "a1denvalu3",
+  "slug": "nak",
+  "displayName": "Nostr Army Knife (nak)",
+  "latest": {
+    "version": "0.1.0",
+    "publishedAt": 1771623011211,
+    "commit": "https://github.com/openclaw/skills/commit/69392c324de437e9d5202ba85dae3479f09b8dd9"
+  },
+  "history": []
+}

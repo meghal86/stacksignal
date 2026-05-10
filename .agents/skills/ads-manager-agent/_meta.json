@@ -1,0 +1,11 @@
+{
+  "owner": "amekala",
+  "slug": "ads-manager-agent",
+  "displayName": "Ads Manager Agent",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1771469500268,
+    "commit": "https://github.com/openclaw/skills/commit/cf8072ecabcc6016fc05558eedffbe1374ab518f"
+  },
+  "history": []
+}

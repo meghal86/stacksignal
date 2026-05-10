@@ -1,0 +1,17 @@
+{
+  "owner": "chrisagiddings",
+  "slug": "tide-watch",
+  "displayName": "Tide Watch",
+  "latest": {
+    "version": "1.0.3",
+    "publishedAt": 1771993271631,
+    "commit": "https://github.com/openclaw/skills/commit/ffa33506690664e327cd1202dbb2044a41cf2d3f"
+  },
+  "history": [
+    {
+      "version": "1.0.2",
+      "publishedAt": 1771993031034,
+      "commit": "https://github.com/openclaw/skills/commit/5753b8ab6d788dc1dc2c72eab5561a19b3775c68"
+    }
+  ]
+}

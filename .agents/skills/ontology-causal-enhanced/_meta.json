@@ -1,0 +1,11 @@
+{
+  "owner": "2233admin",
+  "slug": "ontology-enhanced",
+  "displayName": "Ontology Causal Enhanced",
+  "latest": {
+    "version": "1.2.0",
+    "publishedAt": 1771898496441,
+    "commit": "https://github.com/openclaw/skills/commit/b50115a8f01ca3439df8052798290d05a1f92f38"
+  },
+  "history": []
+}

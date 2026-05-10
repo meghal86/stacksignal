@@ -1,0 +1,22 @@
+{
+  "owner": "24601",
+  "slug": "surrealdb",
+  "displayName": "SurrealDB 3",
+  "latest": {
+    "version": "1.1.0",
+    "publishedAt": 1772082040233,
+    "commit": "https://github.com/openclaw/skills/commit/5f2c906a91e2067b9302fd8b9211eed0adba6a2a"
+  },
+  "history": [
+    {
+      "version": "1.0.6",
+      "publishedAt": 1771969871750,
+      "commit": "https://github.com/openclaw/skills/commit/0301665956dc846803b9b9227fc610ab5161423f"
+    },
+    {
+      "version": "1.0.3",
+      "publishedAt": 1771783747470,
+      "commit": "https://github.com/openclaw/skills/commit/62a186e49823ab0fd251087b75f4d706d1e05a2f"
+    }
+  ]
+}

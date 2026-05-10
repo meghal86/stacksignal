@@ -1,0 +1,11 @@
+{
+  "owner": "patelhiren",
+  "slug": "weather-nws",
+  "displayName": "Weather Nws",
+  "latest": {
+    "version": "0.1.0",
+    "publishedAt": 1771740831766,
+    "commit": "https://github.com/openclaw/skills/commit/6e0af1092610c337fa5550b92146d346f064a889"
+  },
+  "history": []
+}

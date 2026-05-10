@@ -1,0 +1,17 @@
+{
+  "owner": "aaronbatchelder",
+  "slug": "shellmail",
+  "displayName": "ShellMail - Email Built for AI Agents",
+  "latest": {
+    "version": "1.0.5",
+    "publishedAt": 1771978823364,
+    "commit": "https://github.com/openclaw/skills/commit/b5cf59f676684e06d7d453ab6598e4fe42062503"
+  },
+  "history": [
+    {
+      "version": "1.0.1",
+      "publishedAt": 1771905011254,
+      "commit": "https://github.com/openclaw/skills/commit/f101821730f645e01399a471f9f95c7341448761"
+    }
+  ]
+}

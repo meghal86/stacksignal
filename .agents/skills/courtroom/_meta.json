@@ -1,0 +1,11 @@
+{
+  "owner": "assassin-1234",
+  "slug": "courtroom",
+  "displayName": "ClawTrial Courtroom",
+  "latest": {
+    "version": "1.0.1",
+    "publishedAt": 1771622252946,
+    "commit": "https://github.com/openclaw/skills/commit/9e153579c974cc2935d04e3f819eff304706a6ad"
+  },
+  "history": []
+}

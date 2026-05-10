@@ -1,0 +1,11 @@
+{
+  "owner": "alex1389",
+  "slug": "weather-location",
+  "displayName": "Weather&Webcam",
+  "latest": {
+    "version": "1.0.1",
+    "publishedAt": 1771458099315,
+    "commit": "https://github.com/openclaw/skills/commit/2dc4346649eabf7f3f52a66b0c6bba0d410ec9f1"
+  },
+  "history": []
+}

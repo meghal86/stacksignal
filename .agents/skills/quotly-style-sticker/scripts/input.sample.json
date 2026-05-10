@@ -1,0 +1,57 @@
+{
+  "_usage": {
+    "description": "Sample payload for local testing with multi-message mode.",
+    "run_file_input": "python scripts/openclaw_quote_autoreply.py --input scripts/input.sample.json",
+    "run_stdin_input": "Get-Content -Raw scripts/input.sample.json | python scripts/openclaw_quote_autoreply.py --input -",
+    "note": "Unknown fields like _usage are ignored by the script. messages[] entries are merged into one sticker."
+  },
+  "messages": [
+    {
+      "message": {
+        "text": "Sample quoted text A",
+        "forward": {
+          "sender": {
+            "id": 20002,
+            "name": "Forward Source A",
+            "avatar": "https://api.dicebear.com/8.x/lorelei/png?seed=forward-source-a",
+            "statusEmoji": "\ud83d\ude80"
+          },
+          "text": "Forwarded message content A"
+        }
+      }
+    },
+    {
+      "message": {
+        "text": "Sample quoted text B",
+        "forward": {
+          "sender": {
+            "id": 30003,
+            "name": "Forward Source B",
+            "avatar": "https://api.dicebear.com/8.x/lorelei/png?seed=forward-source-b",
+            "statusEmoji": "\ud83d\ude42"
+          },
+          "text": "Forwarded message content B"
+        }
+      }
+    }
+  ],
+  "context": {
+    "event": {
+      "channel": "telegram",
+      "rawPayload": {}
+    }
+  },
+  "quote_text": "",
+  "original_text": "",
+  "source_id": "",
+  "source_name": "",
+  "source_status_emoji": "",
+  "source_avatar_url": "",
+  "background_color": "#1b1429",
+  "width": "512",
+  "height": "768",
+  "scale": "2",
+  "max_width": "300",
+  "border_radius": "28",
+  "picture_radius": "512"
+}

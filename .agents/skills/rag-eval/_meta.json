@@ -1,0 +1,11 @@
+{
+  "owner": "jonathanjing",
+  "slug": "rag-eval",
+  "displayName": "RAG Eval",
+  "latest": {
+    "version": "1.2.0",
+    "publishedAt": 1771885564654,
+    "commit": "https://github.com/openclaw/skills/commit/ff2819697f31afaeb5200553b29173faf174ee7f"
+  },
+  "history": []
+}

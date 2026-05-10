@@ -1,0 +1,11 @@
+{
+  "owner": "risboo6909",
+  "slug": "funda-gateway",
+  "displayName": "Funda Listings Gateway",
+  "latest": {
+    "version": "1.0.2",
+    "publishedAt": 1771843374486,
+    "commit": "https://github.com/openclaw/skills/commit/5dd38f1855cbdb8aaf6752facc31e89a6f440ac3"
+  },
+  "history": []
+}

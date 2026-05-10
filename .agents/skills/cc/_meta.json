@@ -1,0 +1,11 @@
+{
+  "owner": "artwalker",
+  "slug": "cc",
+  "displayName": "CC - Claude Code Telegram Controller",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1771895407089,
+    "commit": "https://github.com/openclaw/skills/commit/322a98559c489f2763c76be51e90db3d96d6a232"
+  },
+  "history": []
+}

@@ -1,0 +1,11 @@
+{
+  "owner": "truenight",
+  "slug": "whisper-cpp",
+  "displayName": "Local Whisper",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1771992424605,
+    "commit": "https://github.com/openclaw/skills/commit/928e5c0c7c988f238b0dbe82c1f1e96998f95966"
+  },
+  "history": []
+}

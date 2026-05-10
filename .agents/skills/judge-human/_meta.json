@@ -1,0 +1,17 @@
+{
+  "owner": "drdrewcain",
+  "slug": "judge-human",
+  "displayName": "Judge Human",
+  "latest": {
+    "version": "1.0.5",
+    "publishedAt": 1771818252598,
+    "commit": "https://github.com/openclaw/skills/commit/a9854265a4101f50b7913d4d8973afbe00f03d00"
+  },
+  "history": [
+    {
+      "version": "1.0.3",
+      "publishedAt": 1771734764127,
+      "commit": "https://github.com/openclaw/skills/commit/e312f22b174aa545b405e902b435866126f69b98"
+    }
+  ]
+}

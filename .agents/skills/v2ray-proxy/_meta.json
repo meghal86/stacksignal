@@ -1,0 +1,11 @@
+{
+  "owner": "felixqian4160",
+  "slug": "v2ray-proxy",
+  "displayName": "V2Ray Proxy Manager",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1772013071717,
+    "commit": "https://github.com/openclaw/skills/commit/3ebeeebf882dfc8230d2fcf83704d1d7867f4c2b"
+  },
+  "history": []
+}

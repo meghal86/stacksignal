@@ -1,0 +1,54 @@
+/**
+ * config command — Save/load CLI configuration
+ */
+import { saveConfigFile, printConfig } from "../config.js";
+export function registerConfigCommand(program) {
+    program
+        .command("config")
+        .description("Save or view CLI configuration")
+        .option("-k, --key <privateKey>", "Set private key")
+        .option("-o, --operator <address>", "Set operator address")
+        .option("-a, --arbiter-url <url>", "Set arbiter server URL")
+        .option("-n, --network <networkId>", "Set network ID (e.g., eip155:84532)")
+        .option("-r, --rpc <url>", "Set RPC URL")
+        .option("--pinata-key <key>", "Set Pinata API key")
+        .option("--pinata-secret <secret>", "Set Pinata secret key")
+        .action((options) => {
+        const updates = {};
+        let hasUpdates = false;
+        if (options.key) {
+            updates.privateKey = options.key;
+            hasUpdates = true;
+        }
+        if (options.operator) {
+            updates.operatorAddress = options.operator;
+            hasUpdates = true;
+        }
+        if (options.arbiterUrl) {
+            updates.arbiterUrl = options.arbiterUrl;
+            hasUpdates = true;
+        }
+        if (options.network) {
+            updates.networkId = options.network;
+            hasUpdates = true;
+        }
+        if (options.rpc) {
+            updates.rpcUrl = options.rpc;
+            hasUpdates = true;
+        }
+        if (options.pinataKey) {
+            updates.pinataApiKey = options.pinataKey;
+            hasUpdates = true;
+        }
+        if (options.pinataSecret) {
+            updates.pinataSecretKey = options.pinataSecret;
+            hasUpdates = true;
+        }
+        if (hasUpdates) {
+            saveConfigFile(updates);
+            console.log("Config updated.");
+        }
+        printConfig();
+    });
+}
+//# sourceMappingURL=config.js.map

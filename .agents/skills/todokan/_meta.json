@@ -1,0 +1,11 @@
+{
+  "owner": "banatealab",
+  "slug": "todokan",
+  "displayName": "Todokan",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1772022220506,
+    "commit": "https://github.com/openclaw/skills/commit/d92a56371bf8a76f322749ea01c81292b830aa00"
+  },
+  "history": []
+}

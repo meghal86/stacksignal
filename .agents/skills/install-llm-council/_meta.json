@@ -1,0 +1,11 @@
+{
+  "owner": "jeadland",
+  "slug": "install-llm-council",
+  "displayName": "LLM Council (with Installer)",
+  "latest": {
+    "version": "1.1.3",
+    "publishedAt": 1771725310548,
+    "commit": "https://github.com/openclaw/skills/commit/1023231463259c8ce4f9b49ce2cfb534ff8eca88"
+  },
+  "history": []
+}

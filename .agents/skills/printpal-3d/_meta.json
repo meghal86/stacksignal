@@ -1,0 +1,11 @@
+{
+  "owner": "plebbyd",
+  "slug": "printpal-3d",
+  "displayName": "PrintPal 3D Generation",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1771559033612,
+    "commit": "https://github.com/openclaw/skills/commit/8ae119bc7799964686f42a030db9f10ff9dedacf"
+  },
+  "history": []
+}

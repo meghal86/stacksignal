@@ -1,0 +1,17 @@
+{
+  "owner": "hxy9243",
+  "slug": "zettel-link",
+  "displayName": "Zettel Link",
+  "latest": {
+    "version": "1.1.2",
+    "publishedAt": 1771974974162,
+    "commit": "https://github.com/openclaw/skills/commit/b9ce20899bca849751f51f6f446f4aa8f86104d2"
+  },
+  "history": [
+    {
+      "version": "1.0.0",
+      "publishedAt": 1771735112432,
+      "commit": "https://github.com/openclaw/skills/commit/3698535eae0282098e50bd5e55937fcf68df4ddf"
+    }
+  ]
+}

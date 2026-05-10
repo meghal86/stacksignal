@@ -1,0 +1,11 @@
+{
+  "owner": "homeofe",
+  "slug": "openclaw-shortcuts",
+  "displayName": "OpenClaw Shortcuts",
+  "latest": {
+    "version": "0.2.5",
+    "publishedAt": 1771953482567,
+    "commit": "https://github.com/openclaw/skills/commit/ebf262e6dbe75561e95c1f1c8298707db49d22de"
+  },
+  "history": []
+}

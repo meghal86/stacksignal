@@ -1,0 +1,194 @@
+import { NextResponse } from "next/server";
+import prisma from "@/lib/prisma";
+
+/**
+ * GET /api/skip-report?slug=xxx
+ * 
+ * Generates a formatted Skip Report from an analysis.
+ * This is the $29 manual sales product from Phase 0.
+ * Returns markdown-formatted content ready for PDF generation or sharing.
+ */
+export async function GET(req: Request) {
+  const url = new URL(req.url);
+  const slug = url.searchParams.get("slug");
+
+  if (!slug) {
+    return NextResponse.json({ error: "slug parameter is required" }, { status: 400 });
+  }
+
+  const analysis = await prisma.analysis.findUnique({
+    where: { slug },
+    include: { target: true },
+  });
+
+  if (!analysis) {
+    return NextResponse.json({ error: "Analysis not found" }, { status: 404 });
+  }
+
+  const targetName = analysis.target?.displayName || analysis.rawInput;
+  const verdict = analysis.verdict || "WATCH";
+  const confidence = analysis.confidence ?? 0;
+  const reasoning = analysis.verdictReasoning || "No detailed reasoning available.";
+  
+  const skipReasons = (analysis.skipReasons as any[]) || [];
+  const validationPlan = (analysis.validationPlan as any[]) || [];
+  const mvpScope = analysis.mvpScope as any;
+  const bestIdea = analysis.bestIdea as any;
+  const topIdeas = (analysis.topIdeas as any[]) || [];
+
+  const scores = {
+    demand: analysis.demandScore ?? 0,
+    founderFit: analysis.founderFitScore ?? 0,
+    crowdedness: analysis.crowdednessScore ?? 0,
+    wtp: analysis.wtpScore ?? 0,
+    gtmFit: analysis.gtmFitScore ?? 0,
+    buildComplexity: analysis.buildComplexity ?? 0,
+    speedToRevenue: analysis.speedToRevenue ?? 0,
+    moat: analysis.moatScore ?? 0,
+    platformRisk: analysis.platformRisk ?? 0,
+  };
+
+  const date = new Date(analysis.createdAt).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+  // Generate formatted markdown report
+  const report = `
+# StackSignal — ${verdict} Report
+## ${targetName}
+
+**Date:** ${date}
+**Verdict:** ${verdict} (Confidence: ${confidence}/10)
+**Signal Type:** ${analysis.target?.type?.replace("_", " ") || "General"}
+
+---
+
+## Executive Summary
+
+${reasoning}
+
+---
+
+## Signal Scores
+
+| Metric | Score | Assessment |
+|--------|-------|------------|
+| Demand | ${scores.demand.toFixed(1)}/10 | ${getAssessment(scores.demand)} |
+| Crowdedness | ${scores.crowdedness.toFixed(1)}/10 | ${getCrowdednessAssessment(scores.crowdedness)} |
+| Willingness to Pay | ${scores.wtp.toFixed(1)}/10 | ${getAssessment(scores.wtp)} |
+| GTM Fit | ${scores.gtmFit.toFixed(1)}/10 | ${getAssessment(scores.gtmFit)} |
+| Build Complexity | ${scores.buildComplexity.toFixed(1)}/10 | ${getComplexityAssessment(scores.buildComplexity)} |
+| Speed to Revenue | ${scores.speedToRevenue.toFixed(1)}/10 | ${getAssessment(scores.speedToRevenue)} |
+| Moat Potential | ${scores.moat.toFixed(1)}/10 | ${getAssessment(scores.moat)} |
+| Platform Risk | ${scores.platformRisk.toFixed(1)}/10 | ${getRiskAssessment(scores.platformRisk)} |
+
+---
+
+${verdict === "SKIP" || skipReasons.length > 0 ? `
+## Why You Should Skip This
+
+${skipReasons.map((r: any, i: number) => `${i + 1}. **${r.ideaName || "This space"}**: ${r.reason}`).join("\n")}
+
+### Key Risk Factors
+${scores.crowdedness >= 7 ? "- ⚠️ **High Market Crowdedness** — Too many funded competitors already in this space\n" : ""}${scores.platformRisk >= 7 ? "- ⚠️ **High Platform Risk** — Single-vendor dependency creates existential risk\n" : ""}${scores.moat <= 3 ? "- ⚠️ **Low Moat Potential** — Easy to replicate, hard to defend\n" : ""}${scores.wtp <= 3 ? "- ⚠️ **Low WTP** — Users expect this for free or as a feature\n" : ""}
+` : ""}
+
+${bestIdea ? `
+## Best Opportunity Identified
+
+**${bestIdea.name || "Unnamed Idea"}**
+${bestIdea.oneLiner || ""}
+
+- **Category:** ${bestIdea.category || "N/A"}
+- **Target Customer:** ${bestIdea.targetCustomer || "N/A"}
+- **Rough Pricing:** ${bestIdea.roughPricing || "N/A"}
+- **Build Time:** ${bestIdea.buildWeeks || "?"} weeks
+- **Risk:** ${bestIdea.skipRisk || "N/A"}
+` : ""}
+
+${validationPlan.length > 0 ? `
+## 7-Day Validation Plan
+
+| Day | Action | Goal | Success Signal |
+|-----|--------|------|----------------|
+${validationPlan.map((step: any) => `| ${step.day} | ${step.action} | ${step.goal} | ${step.successSignal} |`).join("\n")}
+` : ""}
+
+${mvpScope ? `
+## MVP Scope
+
+### Core Features (Build These First)
+${mvpScope.coreFeatures?.map((f: string) => `- ${f}`).join("\n") || "- Not specified"}
+
+### Excluded Features (Do NOT Build)
+${mvpScope.excludedFeatures?.map((f: string) => `- ~~${f}~~`).join("\n") || "- Not specified"}
+
+### Path to First Customer
+${mvpScope.firstCustomerPath || "Not specified"}
+` : ""}
+
+---
+
+## All Ideas Evaluated
+
+${topIdeas.map((idea: any, i: number) => `${i + 1}. **${idea.name}** — ${idea.oneLiner || "No description"} (${idea.category || "uncategorized"})`).join("\n")}
+
+---
+
+*Generated by StackSignal Decision Compression Engine*
+*Report URL: stacksignal.com/report/${slug}*
+`.trim();
+
+  const format = url.searchParams.get("format");
+
+  if (format === "json") {
+    return NextResponse.json({
+      targetName,
+      verdict,
+      confidence,
+      reasoning,
+      scores,
+      skipReasons,
+      validationPlan,
+      mvpScope,
+      bestIdea,
+      topIdeas,
+      date,
+      reportUrl: `https://stacksignal.com/report/${slug}`,
+    });
+  }
+
+  // Default: return markdown
+  return new Response(report, {
+    headers: {
+      "Content-Type": "text/markdown; charset=utf-8",
+      "Content-Disposition": `inline; filename="stacksignal-${verdict.toLowerCase()}-${slug}.md"`,
+    },
+  });
+}
+
+function getAssessment(score: number): string {
+  if (score >= 8) return "🟢 Strong";
+  if (score >= 5) return "🟡 Moderate";
+  return "🔴 Weak";
+}
+
+function getCrowdednessAssessment(score: number): string {
+  if (score >= 7) return "🔴 Overcrowded";
+  if (score >= 4) return "🟡 Competitive";
+  return "🟢 Open Space";
+}
+
+function getComplexityAssessment(score: number): string {
+  if (score >= 8) return "🔴 Very Complex";
+  if (score >= 5) return "🟡 Moderate";
+  return "🟢 Simple";
+}
+
+function getRiskAssessment(score: number): string {
+  if (score >= 7) return "🔴 High Risk";
+  if (score >= 4) return "🟡 Moderate Risk";
+  return "🟢 Low Risk";
+}

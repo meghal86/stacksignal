@@ -1,0 +1,11 @@
+{
+  "owner": "1kalin",
+  "slug": "ai-cost-estimator",
+  "displayName": "AI Cost Estimator",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1771790175805,
+    "commit": "https://github.com/openclaw/skills/commit/f0bbc1ee95399296ca8e59d8bf4146bb6a4b0307"
+  },
+  "history": []
+}

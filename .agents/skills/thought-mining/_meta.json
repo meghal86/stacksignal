@@ -1,0 +1,11 @@
+{
+  "owner": "brojc",
+  "slug": "thought-mining",
+  "displayName": "Thought Mining",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1771662033011,
+    "commit": "https://github.com/openclaw/skills/commit/82c5221607bf55528bb14df00ea70384abb127b3"
+  },
+  "history": []
+}

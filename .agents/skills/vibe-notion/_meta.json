@@ -1,0 +1,17 @@
+{
+  "owner": "devxoul",
+  "slug": "vibe-notion",
+  "displayName": "Vibe Notion",
+  "latest": {
+    "version": "0.6.0",
+    "publishedAt": 1771863728516,
+    "commit": "https://github.com/openclaw/skills/commit/8d561ad9154b7288b8d3d6382eb74844918e3118"
+  },
+  "history": [
+    {
+      "version": "0.5.2",
+      "publishedAt": 1771771508802,
+      "commit": "https://github.com/openclaw/skills/commit/a76bbd5792637b63459d3ada3022b040d30969f3"
+    }
+  ]
+}

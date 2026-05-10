@@ -1,0 +1,11 @@
+{
+  "owner": "jonathanjing",
+  "slug": "skill-trust-auditor",
+  "displayName": "Skill Trust Auditor",
+  "latest": {
+    "version": "1.1.1",
+    "publishedAt": 1771884161497,
+    "commit": "https://github.com/openclaw/skills/commit/d8277596320733d539bd38c3f7b7e2e81d9eaea2"
+  },
+  "history": []
+}

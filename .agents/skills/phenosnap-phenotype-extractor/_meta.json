@@ -1,0 +1,11 @@
+{
+  "owner": "kaichop",
+  "slug": "phenoskill",
+  "displayName": "Phenotype and Medication Extractor",
+  "latest": {
+    "version": "0.1.0",
+    "publishedAt": 1771641899506,
+    "commit": "https://github.com/openclaw/skills/commit/6851e78b526fc00bc169dca9ff2c65b78eecfa8e"
+  },
+  "history": []
+}

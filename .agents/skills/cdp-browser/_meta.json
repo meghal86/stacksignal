@@ -1,0 +1,11 @@
+{
+  "owner": "gostlightai",
+  "slug": "cdp-browser",
+  "displayName": "CDP Browser",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1771625283756,
+    "commit": "https://github.com/openclaw/skills/commit/bdfca37348fcc49394145871bf08b391cf14b094"
+  },
+  "history": []
+}

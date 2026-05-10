@@ -1,0 +1,11 @@
+{
+  "owner": "homeofe",
+  "slug": "openclaw-ispconfig",
+  "displayName": "OpenClaw ISPConfig",
+  "latest": {
+    "version": "0.1.2",
+    "publishedAt": 1771953494596,
+    "commit": "https://github.com/openclaw/skills/commit/2e743efbd8ab3c67902e0e3f6d51e00c1563d23d"
+  },
+  "history": []
+}

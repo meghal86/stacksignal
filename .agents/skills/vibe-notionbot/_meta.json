@@ -1,0 +1,11 @@
+{
+  "owner": "devxoul",
+  "slug": "vibe-notionbot",
+  "displayName": "Vibe Notionbot",
+  "latest": {
+    "version": "0.6.0",
+    "publishedAt": 1771863731857,
+    "commit": "https://github.com/openclaw/skills/commit/3182a56701b3354b3b2615d14e16992de9c66467"
+  },
+  "history": []
+}

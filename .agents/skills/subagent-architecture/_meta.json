@@ -1,0 +1,11 @@
+{
+  "owner": "donovanpankratz-del",
+  "slug": "subagent-architecture",
+  "displayName": "Subagent Architecture - Production Multi-Agent Patterns",
+  "latest": {
+    "version": "2.3.0",
+    "publishedAt": 1772002274224,
+    "commit": "https://github.com/openclaw/skills/commit/8019dc782dc48d600d991698c1921ceeb4941ee2"
+  },
+  "history": []
+}

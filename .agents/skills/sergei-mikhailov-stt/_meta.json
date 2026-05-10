@@ -1,0 +1,11 @@
+{
+  "owner": "bzsega",
+  "slug": "sergei-mikhailov-stt",
+  "displayName": "Speech to Text Skill for OpenClaw",
+  "latest": {
+    "version": "1.0.4",
+    "publishedAt": 1771836851682,
+    "commit": "https://github.com/openclaw/skills/commit/db1ace98432889e82a74d4ed5a66c604c5f0618b"
+  },
+  "history": []
+}

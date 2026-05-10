@@ -1,0 +1,11 @@
+{
+  "owner": "2233admin",
+  "slug": "central-model-switch",
+  "displayName": "OpenClaw Model Switch & Rescue",
+  "latest": {
+    "version": "2.0.0",
+    "publishedAt": 1771890393198,
+    "commit": "https://github.com/openclaw/skills/commit/bba1638dcdab9b5f44705b25901f073c5d9cfcb5"
+  },
+  "history": []
+}

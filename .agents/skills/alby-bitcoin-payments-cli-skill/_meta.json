@@ -1,0 +1,17 @@
+{
+  "owner": "rolznz",
+  "slug": "alby-bitcoin-payments-cli-skill",
+  "displayName": "Alby Bitcoin Payments CLI Skill",
+  "latest": {
+    "version": "1.1.1",
+    "publishedAt": 1771922165850,
+    "commit": "https://github.com/openclaw/skills/commit/1548cc93044cd07cc420d640939e3cd9614fabc9"
+  },
+  "history": [
+    {
+      "version": "1.1.0",
+      "publishedAt": 1770130093843,
+      "commit": "https://github.com/clawdbot/skills/commit/260d55977b3d02183187a4abdcc71c9261cdd1cf"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "owner": "umag",
+  "slug": "swamp",
+  "displayName": "swamp",
+  "latest": {
+    "version": "0.1.0",
+    "publishedAt": 1771660942699,
+    "commit": "https://github.com/openclaw/skills/commit/799229bfaff1d0630c419aac9e5e3dc49dbad590"
+  },
+  "history": []
+}

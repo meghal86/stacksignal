@@ -1,0 +1,11 @@
+{
+  "owner": "parker-xferops",
+  "slug": "xferops-gog",
+  "displayName": "xferops-gog (Google Workspace CLI)",
+  "latest": {
+    "version": "0.1.0",
+    "publishedAt": 1771879119468,
+    "commit": "https://github.com/openclaw/skills/commit/4306f12aa0ae14c10ffdaf2f6dd82176d06dca78"
+  },
+  "history": []
+}

@@ -1,0 +1,11 @@
+{
+  "owner": "luw2007",
+  "slug": "langextract-search",
+  "displayName": "LangExtract Search",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1771931796797,
+    "commit": "https://github.com/openclaw/skills/commit/b66377928e86f0cf3315dd898f2bfe46fc67d411"
+  },
+  "history": []
+}

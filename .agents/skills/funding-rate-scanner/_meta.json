@@ -1,0 +1,11 @@
+{
+  "owner": "dagangtj",
+  "slug": "funding-rate-scanner",
+  "displayName": "Funding Rate Scanner",
+  "latest": {
+    "version": "1.0.1",
+    "publishedAt": 1771910585844,
+    "commit": "https://github.com/openclaw/skills/commit/5e6410346cd2d199ba7739a91564f6798adde0c9"
+  },
+  "history": []
+}

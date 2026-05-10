@@ -1,0 +1,11 @@
+{
+  "owner": "brianppetty",
+  "slug": "farmos-weather",
+  "displayName": "Farmos Weather",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1771750863366,
+    "commit": "https://github.com/openclaw/skills/commit/7a646ff95bf667500a7d7a024d2fb6008a626285"
+  },
+  "history": []
+}

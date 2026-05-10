@@ -1,0 +1,11 @@
+{
+  "owner": "jk-0001",
+  "slug": "scaling-strategy",
+  "displayName": "Scaling Strategy",
+  "latest": {
+    "version": "0.1.0",
+    "publishedAt": 1771947923049,
+    "commit": "https://github.com/openclaw/skills/commit/9b1fe008a2d749e0778cca4e73b4a6e65b61d30e"
+  },
+  "history": []
+}

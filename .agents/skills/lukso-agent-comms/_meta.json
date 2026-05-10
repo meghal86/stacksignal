@@ -1,0 +1,11 @@
+{
+  "owner": "bitcargocrew",
+  "slug": "lukso-agent-comms",
+  "displayName": "Lukso Agent Comms",
+  "latest": {
+    "version": "0.1.5",
+    "publishedAt": 1771590586541,
+    "commit": "https://github.com/openclaw/skills/commit/686814de2c61a04d8ed1b1afe63ef572de02f552"
+  },
+  "history": []
+}

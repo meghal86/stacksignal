@@ -1,0 +1,17 @@
+{
+  "owner": "amitbiswas1992",
+  "slug": "soho",
+  "displayName": "soho",
+  "latest": {
+    "version": "1.0.2",
+    "publishedAt": 1771915025085,
+    "commit": "https://github.com/openclaw/skills/commit/f1affd7bb9317d369ad7a549dbffc6cf0a53dc15"
+  },
+  "history": [
+    {
+      "version": "1.0.1",
+      "publishedAt": 1771563004239,
+      "commit": "https://github.com/openclaw/skills/commit/a377386177e5cc88f9781f3cc995e4e784d6dfce"
+    }
+  ]
+}

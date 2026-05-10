@@ -1,0 +1,11 @@
+{
+  "owner": "amaialex",
+  "slug": "excel-workflow",
+  "displayName": "Excel Workflow",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1771599754062,
+    "commit": "https://github.com/openclaw/skills/commit/625cf29655fcdb2af83184590b34e006e5c86bfb"
+  },
+  "history": []
+}

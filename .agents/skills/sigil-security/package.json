@@ -1,0 +1,28 @@
+{
+  "name": "sigil-security",
+  "displayName": "Sigil Security",
+  "title": "Sigil Security",
+  "version": "4.0.1",
+  "description": "Secure AI agent wallets via Sigil Protocol. 3-layer Guardian validation on 6 EVM chains.",
+  "keywords": ["sigil", "erc-4337", "agent", "wallet", "security", "guardian", "smart-account", "defi"],
+  "homepage": "https://sigil.codes",
+  "repository": "https://github.com/Arven-Digital/sigil-public",
+  "env": {
+    "SIGIL_API_KEY": {
+      "required": true,
+      "description": "Agent API key (starts with sgil_). Generate at sigil.codes/dashboard/agent-access"
+    },
+    "SIGIL_ACCOUNT_ADDRESS": {
+      "required": true,
+      "description": "Deployed Sigil smart account address"
+    },
+    "SIGIL_AGENT_PRIVATE_KEY": {
+      "required": true,
+      "description": "Purpose-generated agent signing key for UserOp signatures. NOT an owner key — minimal gas only."
+    },
+    "SIGIL_CHAIN_ID": {
+      "required": false,
+      "description": "Default chain ID (137=Polygon, 43114=Avalanche, 8453=Base, 42161=Arbitrum, 16661=0G)"
+    }
+  }
+}

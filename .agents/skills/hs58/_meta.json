@@ -1,0 +1,17 @@
+{
+  "owner": "kimbo128",
+  "slug": "hs58",
+  "displayName": "Handshake — AI Payments",
+  "latest": {
+    "version": "1.9.1",
+    "publishedAt": 1772031902073,
+    "commit": "https://github.com/openclaw/skills/commit/2844bd4ec999b71de84d1ed7defc220e2ce808ef"
+  },
+  "history": [
+    {
+      "version": "1.9.0",
+      "publishedAt": 1771923181311,
+      "commit": "https://github.com/openclaw/skills/commit/b26fe9c21a007d1a900bd02291a8f5a8d9af6a57"
+    }
+  ]
+}

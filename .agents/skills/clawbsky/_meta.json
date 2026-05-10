@@ -1,0 +1,17 @@
+{
+  "owner": "jyothish12345",
+  "slug": "clawbsky",
+  "displayName": "Clawbsky",
+  "latest": {
+    "version": "1.1.2",
+    "publishedAt": 1771996706012,
+    "commit": "https://github.com/openclaw/skills/commit/56508662eda54a6fbcec14c1f2109278e04bf29a"
+  },
+  "history": [
+    {
+      "version": "1.1.0",
+      "publishedAt": 1771963709509,
+      "commit": "https://github.com/openclaw/skills/commit/48ae3bf4c7b652a704e1b0ae697d5c51f5142fe8"
+    }
+  ]
+}

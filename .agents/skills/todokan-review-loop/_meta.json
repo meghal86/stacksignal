@@ -1,0 +1,11 @@
+{
+  "owner": "banatealab",
+  "slug": "todokan-review-loop",
+  "displayName": "Todokan Review Loop",
+  "latest": {
+    "version": "1.0.1",
+    "publishedAt": 1772023145146,
+    "commit": "https://github.com/openclaw/skills/commit/be39c842ea1242e7b71d860e63612d47dc7dcbf4"
+  },
+  "history": []
+}

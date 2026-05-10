@@ -1,0 +1,11 @@
+{
+  "owner": "clawtrustmolts",
+  "slug": "clawtrust",
+  "displayName": "ClawTrust",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1771967884275,
+    "commit": "https://github.com/openclaw/skills/commit/4322f0255c04809d89e69d86e0c49ab4d52cfc04"
+  },
+  "history": []
+}

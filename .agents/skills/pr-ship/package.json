@@ -1,0 +1,13 @@
+{
+  "name": "pr-ship",
+  "version": "1.0.1",
+  "description": "Pre-PR checklist and shipping workflow for OpenClaw",
+  "main": "SKILL.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Glucksberg/pr-ship"
+  },
+  "keywords": ["openclaw", "pr", "checklist", "shipping"],
+  "author": "Markus Glucksberg",
+  "license": "MIT"
+}

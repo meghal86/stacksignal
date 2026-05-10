@@ -1,0 +1,11 @@
+{
+  "owner": "brandonwadepackard-cell",
+  "slug": "ai-persona-engine",
+  "displayName": "AI Persona Engine",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1771899328893,
+    "commit": "https://github.com/openclaw/skills/commit/3a3d5379bb12b8815aa4a2d1a8f6241ccfab3ac1"
+  },
+  "history": []
+}

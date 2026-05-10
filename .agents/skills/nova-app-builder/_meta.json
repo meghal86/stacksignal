@@ -1,0 +1,11 @@
+{
+  "owner": "zfdang",
+  "slug": "nova-app-builder",
+  "displayName": "Nova App Builder",
+  "latest": {
+    "version": "1.0.2",
+    "publishedAt": 1771984291871,
+    "commit": "https://github.com/openclaw/skills/commit/ef29e56b86eae91a7d4e96661faab0207d1831fb"
+  },
+  "history": []
+}

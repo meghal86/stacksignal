@@ -1,0 +1,11 @@
+{
+  "owner": "alexjunanjing-2",
+  "slug": "openclaw-traecli",
+  "displayName": "Trae CLI for OpenClaw",
+  "latest": {
+    "version": "1.0.2",
+    "publishedAt": 1771907386154,
+    "commit": "https://github.com/openclaw/skills/commit/5ec0edfa53b1644eeeb14e68e0368a17248220cb"
+  },
+  "history": []
+}

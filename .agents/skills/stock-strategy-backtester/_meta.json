@@ -1,0 +1,17 @@
+{
+  "owner": "taylen",
+  "slug": "stock-strategy-backtester",
+  "displayName": "Stock Strategy Backtester",
+  "latest": {
+    "version": "1.0.2",
+    "publishedAt": 1771988707012,
+    "commit": "https://github.com/openclaw/skills/commit/a488da931e0a7c7c1ca4e2031d6c9fbfd3615ae5"
+  },
+  "history": [
+    {
+      "version": "1.0.1",
+      "publishedAt": 1771950566030,
+      "commit": "https://github.com/openclaw/skills/commit/88759cfb7589919d9632de77975b7ad864949ccb"
+    }
+  ]
+}

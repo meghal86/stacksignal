@@ -1,0 +1,22 @@
+{
+  "owner": "adlai88",
+  "slug": "polymarket-wallet-xray",
+  "displayName": "Polymarket Wallet Xray",
+  "latest": {
+    "version": "1.0.2",
+    "publishedAt": 1772027189568,
+    "commit": "https://github.com/openclaw/skills/commit/296345c23366e2e7c4308094c44f6fb1cac5475f"
+  },
+  "history": [
+    {
+      "version": "1.0.1",
+      "publishedAt": 1772026359955,
+      "commit": "https://github.com/openclaw/skills/commit/6594f57f4b875ab18d262fefede0e4ec16422832"
+    },
+    {
+      "version": "1.0.0",
+      "publishedAt": 1772013913039,
+      "commit": "https://github.com/openclaw/skills/commit/e3db861e6c71386383af5f82ad14681095f85bfb"
+    }
+  ]
+}

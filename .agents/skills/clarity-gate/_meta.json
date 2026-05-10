@@ -1,0 +1,11 @@
+{
+  "owner": "frmoretto",
+  "slug": "clarity-gate",
+  "displayName": "Clarity Gate",
+  "latest": {
+    "version": "2.1.2",
+    "publishedAt": 1771790554541,
+    "commit": "https://github.com/openclaw/skills/commit/27f2e41a590d54b1308bd57f2bc15e44f06748cf"
+  },
+  "history": []
+}

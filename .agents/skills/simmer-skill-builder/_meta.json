@@ -1,0 +1,17 @@
+{
+  "owner": "adlai88",
+  "slug": "simmer-skill-builder",
+  "displayName": "Simmer Skill Builder",
+  "latest": {
+    "version": "1.0.2",
+    "publishedAt": 1772027025909,
+    "commit": "https://github.com/openclaw/skills/commit/3bcfd1b56064642f609965de4a66296af649e748"
+  },
+  "history": [
+    {
+      "version": "1.0.1",
+      "publishedAt": 1771988299252,
+      "commit": "https://github.com/openclaw/skills/commit/da2a44c62f041044368e43686ed72f6433c1c9aa"
+    }
+  ]
+}

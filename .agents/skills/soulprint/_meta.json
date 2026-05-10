@@ -1,0 +1,11 @@
+{
+  "owner": "manuelfelipearias",
+  "slug": "soulprint",
+  "displayName": "Soulprint Identity",
+  "latest": {
+    "version": "1.0.12",
+    "publishedAt": 1771966947646,
+    "commit": "https://github.com/openclaw/skills/commit/b9dc2f04b6d171e8c58a09a554a6fcf9329c0c47"
+  },
+  "history": []
+}

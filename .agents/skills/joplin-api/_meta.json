@@ -1,0 +1,11 @@
+{
+  "owner": "killgfat",
+  "slug": "joplin-api",
+  "displayName": "Joplin Api",
+  "latest": {
+    "version": "0.0.3",
+    "publishedAt": 1771847295184,
+    "commit": "https://github.com/openclaw/skills/commit/7946f8678e2af8585d8ed0d079e1cce09db98c64"
+  },
+  "history": []
+}

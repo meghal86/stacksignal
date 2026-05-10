@@ -1,0 +1,11 @@
+{
+  "owner": "ivangdavila",
+  "slug": "plausible",
+  "displayName": "Plausible",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1772015013831,
+    "commit": "https://github.com/openclaw/skills/commit/15487dae582d680083d867668ec9508beb9b3931"
+  },
+  "history": []
+}

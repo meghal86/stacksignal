@@ -1,0 +1,11 @@
+{
+  "owner": "alfred-pennyworth-ai",
+  "slug": "suno-music",
+  "displayName": "Suno Music",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1772013609001,
+    "commit": "https://github.com/openclaw/skills/commit/3aaa39cd4dc00bdd9580470d6e917e2f28eefbb2"
+  },
+  "history": []
+}

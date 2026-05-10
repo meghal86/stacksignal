@@ -1,0 +1,11 @@
+{
+  "owner": "al-one",
+  "slug": "zai-tts",
+  "displayName": "🗣️ Text-to-speech using GLM-TTS for generating audio",
+  "latest": {
+    "version": "1.0.2",
+    "publishedAt": 1771904336034,
+    "commit": "https://github.com/openclaw/skills/commit/18e1979fb05bd6783c2f73fafea9a866a6bd93f8"
+  },
+  "history": []
+}

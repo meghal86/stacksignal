@@ -1,0 +1,11 @@
+{
+  "owner": "romain-grosos",
+  "slug": "mail-client",
+  "displayName": "Mail Client",
+  "latest": {
+    "version": "1.0.2",
+    "publishedAt": 1772023840769,
+    "commit": "https://github.com/openclaw/skills/commit/734629460b31790d1d33733efb27857b702191dd"
+  },
+  "history": []
+}

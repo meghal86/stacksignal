@@ -1,0 +1,35 @@
+{
+  "default_provider": "yandex",
+  "providers": {
+    "yandex": {
+      "api_key": "YOUR_YANDEX_API_KEY",
+      "folder_id": "YOUR_FOLDER_ID",
+      "lang": "ru-RU",
+      "model": "general",
+      "timeout": 30
+    },
+    "google": {
+      "credentials_path": "${GOOGLE_CREDENTIALS_PATH}",
+      "project_id": "${GOOGLE_PROJECT_ID}",
+      "lang": "ru-RU",
+      "model": "latest_long"
+    },
+    "openai": {
+      "api_key": "${OPENAI_API_KEY}",
+      "model": "whisper-1",
+      "lang": "ru"
+    }
+  },
+  "audio": {
+    "temp_dir": "./temp",
+    "format": "oggopus",
+    "sample_rate": 48000,
+    "max_file_size_mb": 50,
+    "supported_formats": ["ogg", "wav", "mp3"]
+  },
+  "logging": {
+    "level": "INFO",
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    "file": "logs/skill.log"
+  }
+}

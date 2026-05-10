@@ -1,0 +1,11 @@
+{
+  "owner": "vraspar",
+  "slug": "x402r-dispute",
+  "displayName": "x402r Dispute Resolution",
+  "latest": {
+    "version": "0.1.2",
+    "publishedAt": 1771660572088,
+    "commit": "https://github.com/openclaw/skills/commit/8f9660e740ad8e3c130908078e43a1428344311f"
+  },
+  "history": []
+}

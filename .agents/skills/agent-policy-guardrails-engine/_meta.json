@@ -1,0 +1,11 @@
+{
+  "owner": "adad44",
+  "slug": "guardrailsfor-agent",
+  "displayName": "GuardRails",
+  "latest": {
+    "version": "1.0.2",
+    "publishedAt": 1771922018461,
+    "commit": "https://github.com/openclaw/skills/commit/6af817d4a23ab014c2fe98b4c10774d0576a58d0"
+  },
+  "history": []
+}

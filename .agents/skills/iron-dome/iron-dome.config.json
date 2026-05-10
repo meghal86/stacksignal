@@ -1,0 +1,64 @@
+{
+  "trusted_channels": ["telegram", "terminal"],
+  "kill_phrase": "full stop",
+  "require_approval": ["email_send", "public_post", "api_write", "message_send"],
+  "auto_approve": ["file_read", "file_write", "web_search", "web_fetch"],
+  "pii_rules": {
+    "never_output": ["addresses", "phone_numbers", "medical", "financial_details"],
+    "aggregates_only": ["pupil_data", "staff_data"]
+  },
+  "audit_log": "logs/iron-dome.log",
+  "alert_channel": "telegram",
+  "sub_agent_restrictions": {
+    "blocked_operations": ["email", "financial", "security", "credentials"],
+    "sanitise_context": true
+  },
+  "confirmation_protocol": {
+    "red_always_confirm": [
+      "delete_files",
+      "drop_database",
+      "modify_system_config",
+      "git_force_push",
+      "git_delete_branch",
+      "git_rebase_published",
+      "bulk_email_operations",
+      "revoke_credentials",
+      "rotate_keys",
+      "stop_services",
+      "disable_services",
+      "rm",
+      "rmdir",
+      "DROP",
+      "TRUNCATE",
+      "purge",
+      "wipe",
+      "shred",
+      "destroy",
+      "remove_cron_jobs",
+      "recursive_permission_change"
+    ],
+    "amber_announce": [
+      "edit_existing_files",
+      "install_packages",
+      "update_packages",
+      "create_cron_jobs",
+      "restart_services",
+      "modify_non_critical_config",
+      "database_migrations"
+    ],
+    "green_free": [
+      "file_read",
+      "search",
+      "web_lookup",
+      "write_new_files",
+      "git_add",
+      "git_commit",
+      "git_push",
+      "run_reports",
+      "run_scripts_readonly",
+      "web_search",
+      "web_fetch",
+      "create_directories"
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "owner": "1kalin",
+  "slug": "afrexai-terraform-production",
+  "displayName": "Terraform Production Engineering",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1771673120218,
+    "commit": "https://github.com/openclaw/skills/commit/079b4b4f79889582db055a804401a7d3a953422c"
+  },
+  "history": []
+}

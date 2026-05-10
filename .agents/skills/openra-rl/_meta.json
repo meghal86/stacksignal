@@ -1,0 +1,11 @@
+{
+  "owner": "yxc20089",
+  "slug": "openra-rl",
+  "displayName": "OpenRA-RL",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1771627196738,
+    "commit": "https://github.com/openclaw/skills/commit/c0c37b67af01f60c7ce4945ffd819e00130a0680"
+  },
+  "history": []
+}

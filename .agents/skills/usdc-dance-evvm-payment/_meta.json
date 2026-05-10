@@ -1,0 +1,11 @@
+{
+  "owner": "arunnadarasa",
+  "slug": "openclaw-skill-usdc-dance-evvm",
+  "displayName": "Usdc Dance Evvm Payment",
+  "latest": {
+    "version": "0.1.0",
+    "publishedAt": 1771636160874,
+    "commit": "https://github.com/openclaw/skills/commit/6c8631364075d895316c43648aa47d2a01ffdbd5"
+  },
+  "history": []
+}

@@ -1,0 +1,11 @@
+{
+  "owner": "builderbenv1",
+  "slug": "agentproof",
+  "displayName": "AgentProof Trust Oracle",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1771613130676,
+    "commit": "https://github.com/openclaw/skills/commit/cbb4c70283605d54ac6e7bd77e4311ec8ae33e9a"
+  },
+  "history": []
+}

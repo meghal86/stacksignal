@@ -1,0 +1,8 @@
+{
+  "allow_send": false,
+  "allow_read": false,
+  "allow_search": false,
+  "allow_delete": false,
+  "default_folder": "INBOX",
+  "max_results": 20
+}

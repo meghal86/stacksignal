@@ -1,0 +1,11 @@
+{
+  "owner": "whille",
+  "slug": "douyin-download",
+  "displayName": "Douyin Download",
+  "latest": {
+    "version": "1.0.1",
+    "publishedAt": 1771749425578,
+    "commit": "https://github.com/openclaw/skills/commit/7483cb3b2037617e78c9742dbf5e39bb719e56a7"
+  },
+  "history": []
+}

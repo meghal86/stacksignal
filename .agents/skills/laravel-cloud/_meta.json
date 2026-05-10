@@ -1,0 +1,17 @@
+{
+  "owner": "florianbeer",
+  "slug": "laravel-cloud",
+  "displayName": "Laravel Cloud",
+  "latest": {
+    "version": "1.1.0",
+    "publishedAt": 1771854218953,
+    "commit": "https://github.com/openclaw/skills/commit/4c1a7bc9a8d2ce8ca68cd0a34d8cb31302882694"
+  },
+  "history": [
+    {
+      "version": "1.0.3",
+      "publishedAt": 1771520413806,
+      "commit": "https://github.com/openclaw/skills/commit/bae18c229f047d18dc25b65be72844137a48fca0"
+    }
+  ]
+}

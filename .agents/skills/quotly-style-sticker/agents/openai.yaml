@@ -1,0 +1,7 @@
+interface:
+  display_name: "QuotLy Style Sticker"
+  short_description: "Generate QuotLy-style stickers (single or multi-message) with avatar safety controls."
+  default_prompt: "Use $quotly-style-sticker to generate a QuotLy-style webp quote sticker from OpenClaw context (single or multiple forwarded messages) and return MEDIA. Mention privacy controls for avatar URLs if relevant."
+
+policy:
+  allow_implicit_invocation: true

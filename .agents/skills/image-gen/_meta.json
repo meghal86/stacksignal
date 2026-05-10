@@ -1,0 +1,17 @@
+{
+  "owner": "wells1137",
+  "slug": "image-gen",
+  "displayName": "Image Gen Skill",
+  "latest": {
+    "version": "1.2.0",
+    "publishedAt": 1772012562406,
+    "commit": "https://github.com/openclaw/skills/commit/9bf4d394e9fa98a22959d3857b092e246a408f62"
+  },
+  "history": [
+    {
+      "version": "1.0.0",
+      "publishedAt": 1772007816262,
+      "commit": "https://github.com/openclaw/skills/commit/723d182d4b81ee265444d8f2ef6d29247377523d"
+    }
+  ]
+}

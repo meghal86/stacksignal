@@ -1,0 +1,11 @@
+{
+  "owner": "frmoretto",
+  "slug": "hs",
+  "displayName": "HardStop",
+  "latest": {
+    "version": "1.4.7",
+    "publishedAt": 1771792297586,
+    "commit": "https://github.com/openclaw/skills/commit/8ff617f1bd59d3d16fd4d8827c234569feabca0d"
+  },
+  "history": []
+}

@@ -1,0 +1,17 @@
+{
+  "owner": "jonathanjing",
+  "slug": "openclaw-dashboard",
+  "displayName": "OpenClaw Dashboard",
+  "latest": {
+    "version": "1.0.9",
+    "publishedAt": 1771967500268,
+    "commit": "https://github.com/openclaw/skills/commit/0764921174bc4fbd7bff96e867efe6a0950583b6"
+  },
+  "history": [
+    {
+      "version": "1.4.0",
+      "publishedAt": 1771886005507,
+      "commit": "https://github.com/openclaw/skills/commit/e704219b358e1ca04850ce33792f223e306caa90"
+    }
+  ]
+}

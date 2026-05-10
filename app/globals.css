@@ -1,26 +1,176 @@
 @import "tailwindcss";
+@source not "../.agents";
+@source not "../signal_scout_exact_board_asset_kit";
+@source not "../public";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-space-grotesk: "Space Grotesk", sans-serif;
+  --font-geist-mono: "SFMono-Regular", "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  --canvas: #F5F0E8;
+  --ink: #1A1A1A;
+  --action: #FF4800;
+  --clarity: #C5E600;
+  --insight: #00B8A0;
+  --skip: #1A1A1A;
+  --border-warm: #E8E4DD;
+  --spectrum: linear-gradient(90deg, #FF4800, #FF9500, #C5E600, #00B8A0, #0090FF, #9B5DE5, #FF4800);
+  
+  --score-high: #FF4800;
+  --score-mid: #00B8A0;
+  --score-low: #C5E600;
+  --score-noise: #8A8680;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --color-background: var(--canvas);
+  --color-foreground: var(--ink);
+  --color-accent: var(--action);
+  --color-action: var(--action);
+  --color-clarity: var(--clarity);
+  --color-insight: var(--insight);
+  --color-skip: var(--skip);
+  --color-ink: var(--ink);
+  --color-canvas: var(--canvas);
+  --color-border-warm: var(--border-warm);
+  
+  --color-build: var(--action);
+  --color-watch: var(--insight);
+  
+  --color-score-high: var(--score-high);
+  --color-score-mid: var(--score-mid);
+  --color-score-low: var(--score-low);
+  --color-score-noise: var(--score-noise);
+  
+  --background-image-spectrum: var(--spectrum);
+  
+  --font-heading: var(--font-space-grotesk);
   --font-mono: var(--font-geist-mono);
+  
+  --radius-none: 0px;
+  --radius-pill: 100px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    background-color: var(--canvas);
+    color: var(--ink);
+    font-family: sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-space-grotesk);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+  }
+
+  input, select, textarea, button {
+    border-radius: 0px;
+  }
+
+  input, select, textarea {
+    border: 2px solid var(--ink);
+    padding: 0.5rem;
+    background: transparent;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px solid var(--border-warm);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .card-sharp {
+    border: 1px solid var(--border-warm);
+    border-radius: 0px;
+    background: white;
+  }
+
+  .badge-pill {
+    border-radius: 100px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-family: var(--font-geist-mono);
+    font-weight: 700;
+  }
+  
+  .btn-primary {
+    background-color: var(--ink);
+    color: var(--canvas);
+    padding: 0.75rem 1.5rem;
+    font-weight: 700;
+    font-family: var(--font-space-grotesk);
+    letter-spacing: -0.04em;
+    transition: all 0.2s;
+  }
+  
+  .btn-primary:hover {
+    background-color: var(--action);
+  }
+}
+
+@media print {
+  body {
+    background-color: white !important;
+  }
+  
+  nav, footer, .no-print, button {
+    display: none !important;
+  }
+  
+  .print-only {
+    display: block !important;
+  }
+  
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+  
+  .tabs-content {
+    display: block !important;
+    opacity: 1 !important;
+    page-break-after: always;
+  }
+  
+  .tabs-list {
+    display: none !important;
+  }
+
+  /* Force display of all tab contents in print */
+  [data-state="inactive"] {
+    display: block !important;
+  }
+
+  .card-sharp, .bg-white, .bg-canvas {
+    border: 1px solid #1A1A1A !important;
+    background-color: white !important;
+    color: black !important;
+  }
+
+  h1, h2, h3, h4 {
+    color: black !important;
+  }
+
+  .text-white {
+    color: black !important;
+  }
+
+  .bg-ink {
+    background-color: white !important;
+    border: 1px solid #1A1A1A !important;
+  }
+  
+  pre {
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+  }
+
+  @page {
+    margin: 2cm;
+  }
 }

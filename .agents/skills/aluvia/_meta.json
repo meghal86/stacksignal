@@ -1,0 +1,27 @@
+{
+  "owner": "aluvia-connectivity",
+  "slug": "aluvia",
+  "displayName": "Aluvia Proxy: Unblock agent browser with proxies + playwright",
+  "latest": {
+    "version": "1.1.4",
+    "publishedAt": 1771932832207,
+    "commit": "https://github.com/openclaw/skills/commit/5eac3239bf0b0a825d4316ae2472f20acf37a0bf"
+  },
+  "history": [
+    {
+      "version": "1.1.3",
+      "publishedAt": 1771820234102,
+      "commit": "https://github.com/openclaw/skills/commit/3be9144d6bb45233055871d4e26883dec1e2ba04"
+    },
+    {
+      "version": "1.1.2",
+      "publishedAt": 1770968808092,
+      "commit": "https://github.com/openclaw/skills/commit/35ee64d0beec8a052ab4db5f3f6fe01529659c0b"
+    },
+    {
+      "version": "1.1.1",
+      "publishedAt": 1770903518104,
+      "commit": "https://github.com/openclaw/skills/commit/daf223849da3144ee236ea6d44c73ec1e7521350"
+    }
+  ]
+}

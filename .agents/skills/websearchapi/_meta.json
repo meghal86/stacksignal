@@ -1,0 +1,11 @@
+{
+  "owner": "1990huwei",
+  "slug": "websearchapi",
+  "displayName": "WebSearchAPI",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1771926649972,
+    "commit": "https://github.com/openclaw/skills/commit/b647acfa65e8a0c7bf7167004ddebdcccf10e798"
+  },
+  "history": []
+}

@@ -1,0 +1,164 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id               String    @id @default(cuid())
+  email            String    @unique
+  stripeCustomerId String?   @unique
+  plan             Plan      @default(FREE)
+  creditsBalance   Int       @default(3)
+  creditsResetAt   DateTime  @default(now())
+  analyses         Analysis[]
+  savedReports     SavedReport[]
+  alerts           Alert[]
+  founderProfile   FounderProfile?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+}
+
+enum Plan {
+  FREE
+  BUILDER
+  PRO
+}
+
+model FounderProfile {
+  id         String   @id @default(cuid())
+  userId     String   @unique
+  user       User     @relation(fields: [userId], references: [id])
+  background String[]
+  industries String[]
+  timeline   String
+  updatedAt  DateTime @updatedAt
+}
+
+model SignalTarget {
+  id          String     @id @default(cuid())
+  type        TargetType
+  identifier  String
+  displayName String
+  signalData  Json?
+  signalScore Float?
+  lastFetched DateTime?
+  analyses    Analysis[]
+  @@unique([type, identifier])
+}
+
+enum TargetType {
+  GITHUB_REPO
+  NPM_PACKAGE
+  PYPI_PACKAGE
+  DOCKER_IMAGE
+  MCP_SERVER
+  DOMAIN_SEARCH
+}
+
+model Analysis {
+  id               String      @id @default(cuid())
+  userId           String?
+  user             User?       @relation(fields: [userId], references: [id])
+  targetId         String?
+  target           SignalTarget? @relation(fields: [targetId], references: [id])
+  rawInput         String
+  founderProfile   Json?
+  topIdeas         Json
+  bestIdea         Json?
+  verdict          Verdict?
+  confidence       Int?
+  verdictReasoning String?
+  skipReasons      Json?
+  demandScore      Float?
+  founderFitScore  Float?
+  crowdednessScore Float?
+  wtpScore         Float?
+  gtmFitScore      Float?
+  buildComplexity  Float?
+  speedToRevenue   Float?
+  moatScore        Float?
+  platformRisk     Float?
+  validationPlan   Json?
+  mvpScope         Json?
+  buildRoomId      String?     @unique
+  buildRoom        BuildRoom?  @relation(fields: [buildRoomId], references: [id])
+  slug             String      @unique @default(cuid())
+  isPublic         Boolean     @default(false)
+  creditsCost      Int         @default(1)
+  createdAt        DateTime    @default(now())
+}
+
+enum Verdict {
+  BUILD
+  WATCH
+  SKIP
+}
+
+model BuildRoom {
+  id                  String    @id @default(cuid())
+  analysis            Analysis?
+  selectedIdea        Json
+  productSpec         String?
+  architecture        Json?
+  prismaSchema        String?
+  apiMap              Json?
+  stackRecs           Json?
+  businessModel       String?
+  agentTasks          Json?
+  founderTasks        Json?
+  landingCopy         Json?
+  launchPosts         Json?
+  prospectList        Json?
+  financialModel      Json?
+  blueprintApproved   Boolean   @default(false)
+  blueprintApprovedAt DateTime?
+  launchApproved      Boolean   @default(false)
+  launchApprovedAt    DateTime?
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+}
+
+model SavedReport {
+  id         String   @id @default(cuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id])
+  analysisId String
+  createdAt  DateTime @default(now())
+  @@unique([userId, analysisId])
+}
+
+model Alert {
+  id            String     @id @default(cuid())
+  userId        String
+  user          User       @relation(fields: [userId], references: [id])
+  targetType    TargetType
+  category      String
+  minScore      Float
+  active        Boolean    @default(true)
+  lastTriggered DateTime?
+  createdAt     DateTime   @default(now())
+}
+
+model EmailSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  interests String[]
+  source    String?
+  createdAt DateTime @default(now())
+}
+
+model AffiliateClick {
+  id         String   @id @default(cuid())
+  toolName   String
+  toolUrl    String
+  analysisId String?
+  userId     String?
+  createdAt  DateTime @default(now())
+  converted  Boolean  @default(false)
+  @@index([toolName])
+}

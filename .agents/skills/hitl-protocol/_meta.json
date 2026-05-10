@@ -1,0 +1,11 @@
+{
+  "owner": "rotorstar",
+  "slug": "hitl-protocol",
+  "displayName": "HITL Protocol — Workflows and Human Decisions for Autonomous Agents",
+  "latest": {
+    "version": "0.6.0",
+    "publishedAt": 1771880151235,
+    "commit": "https://github.com/openclaw/skills/commit/434cf187021ff9d31586bc71c33e52788a3951dc"
+  },
+  "history": []
+}

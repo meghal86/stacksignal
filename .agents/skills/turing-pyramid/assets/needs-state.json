@@ -1,0 +1,113 @@
+{
+  "security": {
+    "satisfaction": 2.5,
+    "last_satisfied": "2026-02-25T15:34:27Z",
+    "deprivation": 1,
+    "last_decay_check": "2026-02-25T15:34:27Z"
+  },
+  "integrity": {
+    "satisfaction": 2.5,
+    "last_satisfied": "2026-02-25T15:34:27Z",
+    "deprivation": 1,
+    "last_decay_check": "2026-02-25T15:34:27Z"
+  },
+  "coherence": {
+    "satisfaction": 2.0,
+    "last_satisfied": "2026-02-25T15:34:27Z",
+    "deprivation": 1,
+    "last_decay_check": "2026-02-25T15:34:27Z"
+  },
+  "closure": {
+    "satisfaction": 2.0,
+    "last_satisfied": "2026-02-25T15:34:27Z",
+    "deprivation": 1,
+    "last_decay_check": "2026-02-25T15:34:27Z"
+  },
+  "autonomy": {
+    "satisfaction": 2.0,
+    "last_satisfied": "2026-02-25T15:34:27Z",
+    "deprivation": 1,
+    "last_decay_check": "2026-02-25T15:34:27Z"
+  },
+  "connection": {
+    "satisfaction": 2.0,
+    "last_satisfied": "2026-02-25T15:34:27Z",
+    "deprivation": 1,
+    "last_decay_check": "2026-02-25T15:34:27Z"
+  },
+  "competence": {
+    "satisfaction": 2.5,
+    "last_satisfied": "2026-02-25T15:34:27Z",
+    "deprivation": 1,
+    "last_decay_check": "2026-02-25T15:34:27Z"
+  },
+  "understanding": {
+    "satisfaction": 2.0,
+    "last_satisfied": "2026-02-25T15:34:27Z",
+    "deprivation": 1,
+    "last_decay_check": "2026-02-25T15:34:27Z"
+  },
+  "recognition": {
+    "satisfaction": 2.0,
+    "last_satisfied": "2026-02-25T15:34:27Z",
+    "deprivation": 1,
+    "last_decay_check": "2026-02-25T15:34:27Z"
+  },
+  "expression": {
+    "satisfaction": 2.0,
+    "last_satisfied": "2026-02-25T15:34:27Z",
+    "deprivation": 1,
+    "last_decay_check": "2026-02-25T15:34:27Z"
+  },
+  "needs": {
+    "autonomy": {
+      "satisfaction": 0.00,
+      "last_decay_check": "2026-02-25T15:34:57Z"
+    },
+    "closure": {
+      "satisfaction": 0.00,
+      "last_decay_check": "2026-02-25T15:34:57Z"
+    },
+    "coherence": {
+      "satisfaction": 2.00,
+      "last_decay_check": "2026-02-25T15:35:09Z",
+      "last_satisfied": "2026-02-25T15:35:09Z",
+      "last_impact": 2.0
+    },
+    "competence": {
+      "satisfaction": 0.00,
+      "last_decay_check": "2026-02-25T15:34:57Z"
+    },
+    "connection": {
+      "satisfaction": 0.00,
+      "last_decay_check": "2026-02-25T15:34:57Z"
+    },
+    "expression": {
+      "satisfaction": 0.00,
+      "last_decay_check": "2026-02-25T15:34:57Z"
+    },
+    "integrity": {
+      "satisfaction": 2.50,
+      "last_decay_check": "2026-02-25T15:35:08Z",
+      "last_satisfied": "2026-02-25T15:35:08Z",
+      "last_impact": 2.5
+    },
+    "recognition": {
+      "satisfaction": 0.00,
+      "last_decay_check": "2026-02-25T15:34:57Z"
+    },
+    "security": {
+      "satisfaction": 2.50,
+      "last_decay_check": "2026-02-25T15:35:08Z",
+      "last_satisfied": "2026-02-25T15:35:08Z",
+      "last_impact": 2.5
+    },
+    "understanding": {
+      "satisfaction": 0.00,
+      "last_decay_check": "2026-02-25T15:34:57Z"
+    }
+  },
+  "_meta": {
+    "last_cycle": "2026-02-25T15:35:09Z"
+  }
+}

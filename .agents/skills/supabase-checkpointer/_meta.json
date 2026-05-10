@@ -1,0 +1,11 @@
+{
+  "owner": "brandonwadepackard-cell",
+  "slug": "supabase-checkpointer",
+  "displayName": "Supabase LangGraph Checkpointer",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1771899341786,
+    "commit": "https://github.com/openclaw/skills/commit/2157f6c70b320bb49278b4188027f04e0911d31f"
+  },
+  "history": []
+}

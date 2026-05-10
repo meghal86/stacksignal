@@ -1,0 +1,11 @@
+{
+  "owner": "lpigeon",
+  "slug": "ros-skill",
+  "displayName": "ROS",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1772003258740,
+    "commit": "https://github.com/openclaw/skills/commit/76fa816a9e21bf547ce67aad144d8b187b1131be"
+  },
+  "history": []
+}

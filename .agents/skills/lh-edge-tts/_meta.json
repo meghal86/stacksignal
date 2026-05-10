@@ -1,0 +1,11 @@
+{
+  "owner": "liuhedev",
+  "slug": "lh-edge-tts",
+  "displayName": "Lh Edge Tts",
+  "latest": {
+    "version": "0.1.0",
+    "publishedAt": 1771672997264,
+    "commit": "https://github.com/openclaw/skills/commit/2e0d5eec3f3fbc9bfe6441c639ba80423ac6fe4b"
+  },
+  "history": []
+}

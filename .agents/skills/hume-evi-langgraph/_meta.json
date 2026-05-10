@@ -1,0 +1,11 @@
+{
+  "owner": "brandonwadepackard-cell",
+  "slug": "hume-evi-langgraph",
+  "displayName": "Hume EVI + LangGraph Integration",
+  "latest": {
+    "version": "1.0.0",
+    "publishedAt": 1771899315373,
+    "commit": "https://github.com/openclaw/skills/commit/8a0135a0f8f9cf8fe3e7c57173811a52552811d6"
+  },
+  "history": []
+}

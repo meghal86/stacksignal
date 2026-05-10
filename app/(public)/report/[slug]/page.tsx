@@ -21,9 +21,10 @@ function formatDistanceToNow(date: Date): string {
   return "just now";
 }
 
-export default async function ReportPage({ params }: { params: { slug: string } }) {
+export default async function ReportPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const analysis = await prisma.analysis.findUnique({
-    where: { slug: params.slug },
+    where: { slug },
     include: {
       target: true,
     },

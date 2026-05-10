@@ -10,7 +10,8 @@ import { cookies } from "next/headers";
 import { BuildRoomActions } from "@/components/build/BuildRoomActions";
 import { CopyButton } from "@/components/build/CopyButton";
 
-export default async function BuildRoomPage({ params }: { params: { id: string } }) {
+export default async function BuildRoomPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   const cookieStore = await cookies();
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -31,7 +32,7 @@ export default async function BuildRoomPage({ params }: { params: { id: string }
   }
 
   const buildRoom = await prisma.buildRoom.findUnique({
-    where: { id: params.id },
+    where: { id },
     include: {
       analysis: {
         include: {

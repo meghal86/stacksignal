@@ -21,6 +21,57 @@ export type TopIdea = {
   roughPricing: string;
   buildWeeks: number;
   skipRisk: string;
+
+  marketGap?: string;
+  pricingTiers?: Array<{ name: string; price: string; description: string }>;
+  revenueEstimate?: string;
+  competition?: Array<{ name: string; price: string; weakness: string }>;
+  buildNotes?: string;
+  claudePrompts?: Array<{ title: string; prompt: string }>;
+  firstCustomerPath?: string;
+  outreachTemplate?: string;
+
+  narrative?: string;
+  whyNow?: {
+    score: number;
+    factors: Array<{ name: string; score: number; explanation: string }>;
+  };
+  scores?: {
+    opportunity?: { score: number; summary: string; breakdown?: Record<string, number> };
+    problem?: {
+      score: number;
+      painType?: "Acute" | "Chronic" | "Latent";
+      trend?: "Increasing" | "Stable" | "Decreasing";
+      keyPainPoints?: string[];
+      marketEvidence?: Array<{ source: string; evidence: string }>;
+    };
+    feasibility?: { score: number; complexity: string; summary: string };
+    whyNow?: { score: number; summary: string };
+  };
+  businessFit?: {
+    revenuePotential?: {
+      tier: "$" | "$$" | "$$$";
+      arrEstimate: string;
+      revenueExamples?: string[];
+      businessModels?: string[];
+      exampleCompanies?: string[];
+    };
+    executionDifficulty?: number;
+    gtmFit?: number;
+  };
+  categorization?: {
+    type?: string;
+    market?: string;
+    targetCustomer?: string;
+    mainCompetitors?: string[];
+  };
+  skipRisks?: Array<{ severity: "HIGH" | "MEDIUM" | "LOW"; risk: string }>;
+  communitySignals?: {
+    reddit?: string;
+    hackerNews?: string;
+    github?: string;
+    twitter?: string;
+  };
 };
 
 export type ValidationDay = {
@@ -106,7 +157,7 @@ function createSteps(tier: "free" | "paid"): AnalysisStep[] {
     { id: "top_ideas", label: "Generating top ideas", status: "pending" },
   ];
 
-  if (true) { // temporarily unlock all tiers
+  if (tier === "paid") {
     baseSteps.push({
       id: "verdict",
       label: "Generating Build/Skip/Watch verdict",
@@ -171,7 +222,10 @@ export function useAnalysis() {
     if (!response.ok) {
       const payload = await response.json().catch(() => ({}));
       setStatus("error");
-      setError(payload.error ?? "Analysis request failed");
+      const errorMessage = payload.details 
+        ? `${payload.error}: ${payload.details}` 
+        : (payload.error ?? "Analysis request failed");
+      setError(errorMessage);
       return;
     }
 

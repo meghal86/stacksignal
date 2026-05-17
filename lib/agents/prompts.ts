@@ -24,7 +24,71 @@ Each object:
   "targetCustomer": string (specific, not "developers"),
   "roughPricing": string (e.g. "$99-299/month"),
   "buildWeeks": number,
-  "skipRisk": string (one reason this could fail)
+  "skipRisk": string (one reason this could fail),
+  "marketGap": string (the specific gap this fills, 1 sentence),
+  "pricingTiers": [
+    { "name": string, "price": string, "description": string }
+  ] (exactly 3 tiers: Starter, Growth, Scale),
+  "revenueEstimate": string (e.g. "$14,950 MRR at 50 customers"),
+  "competition": [
+    { "name": string, "price": string, "weakness": string }
+  ] (2-4 competitors with their weakness vs your wedge),
+  "buildNotes": string (week-by-week high level plan, 2-3 sentences),
+  "claudePrompts": [
+    { "title": string, "prompt": string }
+  ] (4-5 copy-pasteable Claude Code prompts to build the MVP: schema, API, landing copy, outreach),
+  "firstCustomerPath": string (where to find the first 10 customers),
+  "outreachTemplate": string (cold message under 60 words, references their pain),
+
+  "narrative": string (500-800 words, 4 paragraphs: the ecosystem, the pain, why existing solutions fail, the window of opportunity — reads like a research brief, NOT bullets),
+  "whyNow": {
+    "score": number (0-10),
+    "factors": [
+      { "name": string, "score": number, "explanation": string (2 sentences) }
+    ] (3-4 timing factors: tech readiness, market awareness, competitive window, regulatory)
+  },
+  "scores": {
+    "opportunity": {
+      "score": number (0-10),
+      "summary": string (1 sentence),
+      "breakdown": { "marketSize": number, "growthRate": number, "competitionGap": number, "timing": number }
+    },
+    "problem": {
+      "score": number (0-10),
+      "painType": "Acute" | "Chronic" | "Latent",
+      "trend": "Increasing" | "Stable" | "Decreasing",
+      "keyPainPoints": string[] (4-5),
+      "marketEvidence": [ { "source": string (e.g. "Reddit", "HN", "GitHub"), "evidence": string } ]
+    },
+    "feasibility": { "score": number (0-10, lower=easier), "complexity": "Easy" | "Medium" | "Hard", "summary": string },
+    "whyNow": { "score": number (0-10), "summary": string }
+  },
+  "businessFit": {
+    "revenuePotential": {
+      "tier": "$" | "$$" | "$$$",
+      "arrEstimate": string (e.g. "$1M-$10M"),
+      "revenueExamples": string[],
+      "businessModels": string[],
+      "exampleCompanies": string[]
+    },
+    "executionDifficulty": number (0-10),
+    "gtmFit": number (0-10)
+  },
+  "categorization": {
+    "type": string (e.g. "SaaS"),
+    "market": string (e.g. "B2B"),
+    "targetCustomer": string,
+    "mainCompetitors": string[]
+  },
+  "skipRisks": [
+    { "severity": "HIGH" | "MEDIUM" | "LOW", "risk": string }
+  ],
+  "communitySignals": {
+    "reddit": string (one specific finding with subreddit name),
+    "hackerNews": string (specific post title or count),
+    "github": string (specific issue ref),
+    "twitter": string (optional trend)
+  }
 }
 `
 

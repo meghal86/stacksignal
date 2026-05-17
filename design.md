@@ -1,71 +1,88 @@
 # StackSignal Design System
 
+## Direction: Signal Engine
+
+StackSignal should feel like a trusted developer-infrastructure product with a memorable
+technical illustration system. The product is a signal engine: GitHub, npm, HN, and
+competition data move through clean machinery until the app compresses noise into a
+Build / Skip / Watch call.
+
+Reference qualities:
+- Fly.io-style confidence: simple headline, clear technical promise, custom illustration.
+- Poch/Ribbit-style memorability, but only through controlled illustration, not clutter.
+- StackSignal-specific result: warm, sharp, animated, credible, developer-first.
+
+## Visual Principles
+
+- One strong visual idea per page: signal engine, analysis scanner, report artifact, pricing gate.
+- Oversized type should carry the page. Do not make headings timid.
+- Data UI stays sharp and readable; art lives around it, behind it, or beside it.
+- No graffiti clutter, no generic SaaS gradients, no purple-default look.
+- Every core page should show some form of motion or signal activity.
+
 ## Color Palette
+
 ```css
 :root {
-  /* The StackSignal five */
-  --color-signal:   #FF4800;  /* orange — action */
-  --color-clarity:  #C5E600;  /* yellow-green — good */
-  --color-insight:  #00B8A0;  /* teal — focus */
-  --color-ink:      #1A1A1A;  /* near-black — everything */
-  --color-canvas:   #F5F0E8;  /* warm cream — base */
-
-  /* Semantic verdict colors */
-  --color-build:    #FF4800;  /* orange */
-  --color-watch:    #00B8A0;  /* teal */
-  --color-skip:     #1A1A1A;  /* ink — crossed out */
-
-  /* Score scale (matches the four numbers) */
-  --score-high:     #FF4800;  /* 80-100 */
-  --score-mid:      #00B8A0;  /* 50-79 */
-  --score-low:      #C5E600;  /* 30-49 */
-  --score-noise:    #8A8680;  /* 0-29 */
+  --color-signal:   #FF4800;  /* orange action */
+  --color-clarity:  #C5E600;  /* acid clarity */
+  --color-insight:  #00B8A0;  /* teal focus */
+  --color-ink:      #1A1A1A;  /* near-black */
+  --color-canvas:   #F5F0E8;  /* warm cream */
+  --color-paper:    #FFFAF1;  /* report cards */
+  --color-blue:     #0090FF;  /* spectrum only */
+  --color-violet:   #9B5DE5;  /* spectrum only */
 }
 ```
+
 - **Spectrum**: `linear-gradient(90deg, #FF4800, #FF9500, #C5E600, #00B8A0, #0090FF, #9B5DE5, #FF4800)`
-- **Border**: `#E8E4DD` (Warm, not cold gray)
+- **Border**: `#1A1A1A` for featured modules, `#E8E4DD` for quiet dividers.
+- **Canvas**: warm cream, never flat white as the main page background.
 
 ## Typography
-- **Headings**: `Space Grotesk 700`
-    - Weight: 700
-    - Letter-spacing: `-0.04em`
-- **Data Labels**: `System mono`
-- **General**: No serifs anywhere — this is a tool, not a magazine.
 
-## Corner Radius
-- **Primary Cards**: `0px` (Sharp)
-- **Badges/Tags/Pills**: `100px` (Pill)
-- **Everything else**: `0px` or `100px` — nothing in between.
+- **Headings**: Space Grotesk 700, uppercase when it improves impact.
+- **Display titles**: very large, tight tracking, line-height below 1.
+- **Labels/data**: system mono, uppercase, wide letter spacing.
+- **General**: no serifs. This is a tool with art direction, not a magazine.
 
-## UI Rules
-- **Dividers**: `1px #E8E4DD`
-- **Inputs**: `2px #0A0A08` (Strong, confident)
-- **Shadows**: No box-shadows anywhere.
+## Shape & UI Rules
 
-## Graffiti Layer
+- Cards and controls are sharp: `0px` radius.
+- Badges and small status pills may use full pill radius.
+- Prefer 1px borders and layered backgrounds over box shadows.
+- Inputs are strong: 2px ink border, paper/white fill.
+- CTAs should be either Signal orange, Ink black, or Clarity green-yellow.
 
-Every dashboard surface can have graffiti elements.
-These are SVG elements placed OVER clean UI, never replacing it.
+## Art Layer
 
-### The creature system
-- Signal Scout: orange (#FF3E00), sidebar + empty states
-- Build Bot: green (#00C94A), BUILD verdict cards
-- Watch Owl: amber (#FFAA00), WATCH verdict items
-- Skip Ghost: crosses out with red X spray
+The reusable art language is the **Signal Engine**:
+- Technical grid: subtle, low-contrast, never dominant.
+- Orbit lines: thin black ellipses.
+- Nodes: GH, npm, HN, AI markers.
+- Scanner needle: rotating black line with orange endpoint.
+- Signal Scout: abstract orange machine core, not a cartoon unless final assets exist.
+- Infrastructure blocks: small server/process rectangles around the scanner.
+- Marquee strips: moving signal terms across black bands.
 
-### Spray ring
-Use around featured/top-ranked items only.
-SVG circle, stroke-dasharray="8 6", opacity 0.4.
-Add scattered dots around the ring (opacity 0.2-0.5).
+Rules:
+- Never let art reduce legibility.
+- Never put heavy art inside payment forms.
+- Motion must respect `prefers-reduced-motion`.
+- Use max two major art elements per viewport.
+- Graffiti marks are deprecated. Use technical illustration instead.
 
-### Ghost text tags
-Huge text (80-120px) at 0.06-0.12 opacity behind content.
-"BUILD" on green verdict sections.
-"SKIP" with red on dead opportunities.
-"STACKSIGNAL 2026" as a bottom-right signature on reports.
+## Page Roles
 
-### Rules
-- Max 2 graffiti elements per card
-- Creatures always overlap an edge (never float centered)
-- Spray effects always in verdict color (green/red/amber)
-- Never use graffiti on forms, inputs, or payment flows
+- **Homepage**: product demo and art manifesto. User sees radar, leaderboard, and try chips.
+- **Analyze**: live scanner workspace. Progress is central, not hidden.
+- **Report**: shareable signal artifact. It should look good in screenshots.
+- **Pricing**: simple payment gate. Artistic but direct, no dark patterns.
+- **Build Room**: operational workspace. More utility, less decoration.
+
+## Mobile
+
+- Collapse art beside content, never leave empty hero columns.
+- Keep nav compact: logo + primary CTA, hide secondary links if needed.
+- Large tables become stacked cards.
+- Display titles scale down aggressively on small screens.

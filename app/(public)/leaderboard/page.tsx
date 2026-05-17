@@ -1,6 +1,5 @@
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { Navbar } from "@/components/layout/Navbar";
 import { EmailCapture } from "@/components/marketing/EmailCapture";
 import Link from "next/link";
 import prisma from "@/lib/prisma";
@@ -12,8 +11,39 @@ export const metadata = {
 
 export const revalidate = 300; // Revalidate every 5 minutes
 
+type LeaderboardItem = {
+  id?: string;
+  slug: string;
+  repoName?: string;
+  rawInput?: string;
+  verdict?: "BUILD" | "WATCH" | "SKIP" | string | null;
+  verdictReasoning?: string | null;
+  signalScore?: number | null;
+  demandScore?: number | null;
+  crowdednessScore?: number | null;
+  createdAt?: Date | string;
+  language?: string | null;
+  target?: {
+    displayName?: string | null;
+    type?: string | null;
+  } | null;
+};
+
+function badgeVariant(verdict?: string | null): "build" | "skip" | "watch" {
+  if (verdict === "BUILD") return "build";
+  if (verdict === "SKIP") return "skip";
+  return "watch";
+}
+
 export default async function LeaderboardPage() {
-  const analyses = await prisma.analysis.findMany({
+  const today = new Date().toISOString().split("T")[0];
+  const cache =
+    (await prisma.leaderboardCache.findUnique({ where: { date: today } })) ??
+    (await prisma.leaderboardCache.findFirst({ orderBy: { date: "desc" } }));
+
+  const cachedEntries = Array.isArray(cache?.entries) ? (cache.entries as LeaderboardItem[]) : [];
+
+  const analyses = cachedEntries.length ? [] : await prisma.analysis.findMany({
     take: 30,
     orderBy: { createdAt: "desc" },
     include: {
@@ -24,9 +54,25 @@ export default async function LeaderboardPage() {
     },
   });
 
-  const buildCount = analyses.filter((a) => a.verdict === "BUILD").length;
-  const skipCount = analyses.filter((a) => a.verdict === "SKIP").length;
-  const watchCount = analyses.filter((a) => a.verdict === "WATCH").length;
+  const entries: LeaderboardItem[] = cachedEntries.length
+    ? cachedEntries
+    : analyses.map((analysis) => ({
+        id: analysis.id,
+        slug: analysis.slug,
+        repoName: analysis.target?.displayName || analysis.rawInput,
+        rawInput: analysis.rawInput,
+        verdict: analysis.verdict,
+        verdictReasoning: analysis.verdictReasoning,
+        signalScore: analysis.target?.signalScore,
+        demandScore: analysis.demandScore,
+        crowdednessScore: analysis.crowdednessScore,
+        createdAt: analysis.createdAt,
+        target: analysis.target,
+      }));
+
+  const buildCount = entries.filter((a) => a.verdict === "BUILD").length;
+  const skipCount = entries.filter((a) => a.verdict === "SKIP").length;
+  const watchCount = entries.filter((a) => a.verdict === "WATCH").length;
 
   return (
     <div className="min-h-screen bg-canvas text-ink relative overflow-hidden">
@@ -35,8 +81,6 @@ export default async function LeaderboardPage() {
         <div className="absolute top-[5%] right-[-5%] text-[18vw] font-heading rotate-[8deg] uppercase">VERDICTS</div>
         <div className="absolute bottom-[15%] left-[-3%] text-[12vw] font-heading -rotate-[6deg] uppercase text-action">SKIP</div>
       </div>
-
-      <Navbar />
 
       <main className="max-w-7xl mx-auto px-6 py-16 relative z-10">
         {/* Header */}
@@ -50,7 +94,7 @@ export default async function LeaderboardPage() {
           </h1>
           <p className="text-xl text-ink/60 font-medium max-w-2xl">
             Real-time Build/Skip/Watch verdicts for the developer ecosystem. 
-            We analyze GitHub velocity, market crowdedness, and demand signals — so you don't have to.
+            We analyze GitHub velocity, market crowdedness, and demand signals — so you don&apos;t have to.
           </p>
         </div>
 
@@ -81,10 +125,10 @@ export default async function LeaderboardPage() {
                 <Badge variant="skip" className="border-2 border-ink px-4 py-1 text-[10px]">HIGH PRIORITY</Badge>
               </div>
               <div className="space-y-3">
-                {analyses
+                {entries
                   .filter((a) => a.verdict === "SKIP")
                   .map((item, i) => (
-                    <LeaderboardRow key={item.id} item={item} rank={i + 1} featured />
+                    <LeaderboardRow key={item.slug} item={item} rank={i + 1} featured />
                   ))}
               </div>
             </div>
@@ -98,10 +142,10 @@ export default async function LeaderboardPage() {
                 <div className="flex-1 h-0.5 bg-action/10" />
               </div>
               <div className="space-y-3">
-                {analyses
+                {entries
                   .filter((a) => a.verdict === "BUILD")
                   .map((item, i) => (
-                    <LeaderboardRow key={item.id} item={item} rank={i + 1} />
+                    <LeaderboardRow key={item.slug} item={item} rank={i + 1} />
                   ))}
               </div>
             </div>
@@ -115,16 +159,16 @@ export default async function LeaderboardPage() {
                 <div className="flex-1 h-0.5 bg-insight/10" />
               </div>
               <div className="space-y-3">
-                {analyses
+                {entries
                   .filter((a) => a.verdict === "WATCH")
                   .map((item, i) => (
-                    <LeaderboardRow key={item.id} item={item} rank={i + 1} />
+                    <LeaderboardRow key={item.slug} item={item} rank={i + 1} />
                   ))}
               </div>
             </div>
           )}
 
-          {analyses.length === 0 && (
+          {entries.length === 0 && (
             <div className="p-24 border-2 border-dashed border-ink/10 text-center">
               <p className="font-heading text-3xl uppercase opacity-20 tracking-widest italic mb-4">
                 No signals tracked yet
@@ -155,14 +199,15 @@ export default async function LeaderboardPage() {
   );
 }
 
-function LeaderboardRow({ item, rank, featured }: { item: any; rank: number; featured?: boolean }) {
+function LeaderboardRow({ item, rank, featured }: { item: LeaderboardItem; rank: number; featured?: boolean }) {
   const verdictColor = item.verdict === "BUILD"
     ? "text-action"
     : item.verdict === "SKIP"
       ? "text-ink"
       : "text-insight";
 
-  const score = item.demandScore ?? item.crowdednessScore ?? 0;
+  const score = item.signalScore ?? item.demandScore ?? item.crowdednessScore ?? 0;
+  const createdAt = item.createdAt ? new Date(item.createdAt) : null;
 
   return (
     <Link
@@ -184,19 +229,21 @@ function LeaderboardRow({ item, rank, featured }: { item: any; rank: number; fea
       <div className="flex-1 ml-6">
         <div className="flex items-center gap-4">
           <h3 className="font-heading text-2xl uppercase tracking-tighter group-hover:text-action transition-colors truncate max-w-[300px]">
-            {item.target?.displayName || item.rawInput}
+            {item.repoName || item.target?.displayName || item.rawInput}
           </h3>
-          <Badge variant={(item.verdict?.toLowerCase()) || "watch"} className="border-2 border-ink px-3 py-0.5 text-[9px]">
+          <Badge variant={badgeVariant(item.verdict)} className="border-2 border-ink px-3 py-0.5 text-[9px]">
             {item.verdict}
           </Badge>
         </div>
         <div className="flex items-center gap-6 mt-2">
           <p className="font-mono text-[10px] text-ink/40 uppercase tracking-widest font-bold">
-            {item.target?.type?.replace("_", " ") || "TARGET"}
+            {item.language || item.target?.type?.replace("_", " ") || "TRENDING REPO"}
           </p>
-          <p className="font-mono text-[10px] text-ink/30 uppercase">
-            {new Date(item.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
-          </p>
+          {createdAt ? (
+            <p className="font-mono text-[10px] text-ink/30 uppercase">
+              {createdAt.toLocaleDateString("en-US", { month: "short", day: "numeric" })}
+            </p>
+          ) : null}
           {item.verdictReasoning && (
             <p className="font-mono text-[10px] text-ink/40 truncate max-w-[400px] hidden lg:block">
               {item.verdictReasoning}

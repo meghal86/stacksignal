@@ -60,11 +60,13 @@ export async function runFullAnalysis({
   userId,
   normalizedInput,
   inputType,
+  emitDecision,
   onProgress
 }: {
   userId: string;
   normalizedInput: string;
   inputType: AnalysisInputType;
+  emitDecision?: boolean;
   onProgress?: (event: string, data: any) => void;
 }) {
   const signals: AggregateSignals = {};
@@ -129,7 +131,7 @@ export async function runFullAnalysis({
   sendEvent("ideas_ready", { ideas: topIdeas, signalScore });
 
   // 4. Decision Engine
-  sendEvent("decision_start", {});
+  if (emitDecision !== false) sendEvent("decision_start", {});
   const fullDecision = await generateDecision({
     topIdeas,
     signalScore,
@@ -139,7 +141,7 @@ export async function runFullAnalysis({
     signalScoreTotal: signalScore.total,
     targetName: normalizedInput,
   };
-  sendEvent("decision_ready", { decision });
+  if (emitDecision !== false) sendEvent("decision_ready", { decision });
 
   // 5. Database Persistence
   const targetType = inputType === "github_repo" ? "GITHUB_REPO" : inputType === "npm_package" ? "NPM_PACKAGE" : "PYPI_PACKAGE";
@@ -169,6 +171,7 @@ export async function runFullAnalysis({
     topIdeas,
     decision,
     creditCost: 1, // Default cost
+    signalsRaw: signals,
   });
 
   // 6. Build Room Generation (if applicable)

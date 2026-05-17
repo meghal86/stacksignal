@@ -11,19 +11,6 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-canvas text-ink selection:bg-action/20">
-      {/* Nav */}
-      <nav className="px-6 py-6 flex justify-between items-center max-w-7xl mx-auto">
-        <Link href="/" className="text-xl font-heading tracking-tighter uppercase hover:text-action transition-colors">
-          STACKSIGNAL
-        </Link>
-        <div className="flex items-center gap-6 font-mono text-[10px] font-bold uppercase tracking-widest">
-          <Link href="/leaderboard" className="text-ink/60 hover:text-ink transition-colors">Leaderboard</Link>
-          <Link href="/methodology" className="text-ink/60 hover:text-ink transition-colors">Methodology</Link>
-        </div>
-      </nav>
-
-      <div className="h-[3px] bg-spectrum" />
-
       {/* Hero */}
       <section className="px-6 py-24 max-w-4xl mx-auto">
         <p className="font-mono text-[10px] text-ink/30 uppercase tracking-[0.3em] font-bold mb-6">

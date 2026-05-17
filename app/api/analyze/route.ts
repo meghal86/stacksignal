@@ -1,5 +1,4 @@
-import { createServerClient } from "@supabase/ssr";
-import { cookies } from "next/headers";
+import { createClient } from "@/lib/supabase-server";
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import { detectAnalysisInputType, normalizeAnalysisInput, type AnalysisInputType } from "@/lib/analysis/input";
@@ -8,20 +7,13 @@ import { checkAnalysisCache, deductCredits } from "@/lib/api/analyze-helpers";
 
 export async function POST(req: Request) {
   try {
-    const cookieStore = await cookies();
-    const supabase = createServerClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-      {
-        cookies: {
-          get(name: string) {
-            return cookieStore.get(name)?.value;
-          },
-        },
-      }
-    );
+    const supabase = await createClient();
+    const { data: { user: authUser }, error: authError } = await supabase.auth.getUser();
 
-    const { data: { user: authUser } } = await supabase.auth.getUser();
+    if (authError) {
+      console.error("Supabase auth error:", authError);
+    }
+
     const body = await req.json();
     const rawInput = typeof body.input === "string" ? body.input.trim() : "";
     const tier = body.tier === "paid" ? "paid" : "free";
@@ -33,7 +25,15 @@ export async function POST(req: Request) {
     const targetType = inputType === "github_repo" ? "GITHUB_REPO" : inputType === "npm_package" ? "NPM_PACKAGE" : "PYPI_PACKAGE";
 
     const actingUser = authUser ?? (process.env.NODE_ENV === "development" ? { id: "test-user-id", email: "dev@stacksignal.local" } : null);
-    if (!actingUser) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    
+    if (!actingUser) {
+      console.warn("Unauthorized access attempt to /api/analyze");
+      return NextResponse.json({ 
+        error: "Unauthorized", 
+        details: authError?.message || "No active session found. Please log in.",
+        tier 
+      }, { status: 401 });
+    }
 
     let dbUser = await prisma.user.findUnique({ where: { id: actingUser.id } });
     if (!dbUser) {
@@ -42,8 +42,13 @@ export async function POST(req: Request) {
       });
     }
 
-    const creditCost = tier === "paid" ? 5 : 1;
-    if (dbUser.creditsBalance < creditCost) return NextResponse.json({ error: "Insufficient credits" }, { status: 402 });
+    const shouldBypassCredits =
+      process.env.NODE_ENV === "development" &&
+      process.env.ENFORCE_DEV_CREDITS !== "true";
+    const creditCost = shouldBypassCredits ? 0 : tier === "paid" ? 5 : 1;
+    if (!shouldBypassCredits && dbUser.creditsBalance < creditCost) {
+      return NextResponse.json({ error: "Insufficient credits" }, { status: 402 });
+    }
 
     const cachedAnalysis = await checkAnalysisCache(normalizedInput, targetType);
 
@@ -56,7 +61,7 @@ export async function POST(req: Request) {
 
         try {
           if (cachedAnalysis && cachedAnalysis.verdict) {
-            sendEvent("ideas_ready", { ideas: cachedAnalysis.topIdeas, signalScore: { total: (cachedAnalysis as any).target?.signalScore ?? 0 } });
+            sendEvent("ideas_ready", { ideas: cachedAnalysis.topIdeas, signalScore: { total: cachedAnalysis.target?.signalScore ?? 0 } });
             if (tier === "paid") {
               sendEvent("decision_ready", { decision: { ...cachedAnalysis, targetName: normalizedInput } });
             }
@@ -65,14 +70,17 @@ export async function POST(req: Request) {
             return;
           }
 
-          const { analysis, decision, buildRoomId } = await runFullAnalysis({
+          const { analysis, buildRoomId } = await runFullAnalysis({
             userId: actingUser.id,
             normalizedInput,
             inputType,
+            emitDecision: tier === "paid",
             onProgress: sendEvent
           });
 
-          await deductCredits(actingUser.id, creditCost);
+          if (creditCost > 0) {
+            await deductCredits(actingUser.id, creditCost);
+          }
 
           sendEvent("analysis_complete", {
             analysisId: analysis.id,

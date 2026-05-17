@@ -12,11 +12,13 @@ function getScoreLabel(total: number) {
 }
 
 export function SignalScoreCard({ score }: SignalScoreCardProps) {
+  const total = score?.total ?? 0;
+  const raw = score?.breakdown ?? {};
   const breakdown = [
-    { label: "Production Proof", value: score.breakdown.tier1 ?? 0, max: 4 },
-    { label: "Demand Proof", value: score.breakdown.tier2 ?? 0, max: 4 },
-    { label: "Competition Gap", value: score.breakdown.tier3 ?? 0, max: 2 },
-    { label: "Health Signals", value: score.breakdown.tier4 ?? 0, max: 2 },
+    { label: "Production Proof", value: raw.productionProof ?? raw.tier1 ?? 0, max: 4 },
+    { label: "Demand Proof", value: raw.demandProof ?? raw.tier2 ?? 0, max: 4 },
+    { label: "Competition Gap", value: raw.competitionGap ?? raw.tier3 ?? 0, max: 2 },
+    { label: "Maintenance", value: raw.maintenance ?? raw.tier4 ?? 0, max: 2 },
   ];
 
   return (
@@ -27,12 +29,12 @@ export function SignalScoreCard({ score }: SignalScoreCardProps) {
         </p>
         <div className="mt-2 flex items-end gap-2">
           <h2 className="font-heading text-5xl uppercase tracking-tight text-action">
-            {score.total.toFixed(1)}
+            {total.toFixed(1)}
           </h2>
           <span className="pb-1 font-mono text-sm text-ink/40">/12</span>
         </div>
         <p className="mt-2 font-mono text-xs uppercase tracking-[0.14em] text-ink/60">
-          {getScoreLabel(score.total)}
+          {getScoreLabel(total)}
         </p>
       </div>
 

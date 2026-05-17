@@ -51,8 +51,11 @@ export function Navbar({ user }: { user?: any }) {
               <Link href="/pricing" className="text-[10px] font-mono font-bold uppercase tracking-widest text-ink/60 hover:text-ink transition-colors px-4">
                 Pricing
               </Link>
-              <Link href="/login">
-                <Button size="sm" className="font-heading uppercase text-[10px] px-6">Get Started</Button>
+              <Link href="/login" className="text-[10px] font-mono font-bold uppercase tracking-widest text-ink/60 hover:text-ink transition-colors px-4">
+                Sign In
+              </Link>
+              <Link href="/signup">
+                <Button size="sm" className="font-heading uppercase text-[10px] px-6">Sign Up</Button>
               </Link>
             </>
           ) : (

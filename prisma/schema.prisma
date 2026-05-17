@@ -67,6 +67,7 @@ model Analysis {
   rawInput         String
   founderProfile   Json?
   topIdeas         Json
+  signalsRaw       Json?
   bestIdea         Json?
   verdict          Verdict?
   confidence       Int?
@@ -89,6 +90,53 @@ model Analysis {
   isPublic         Boolean     @default(false)
   creditsCost      Int         @default(1)
   createdAt        DateTime    @default(now())
+  project          Project?
+}
+
+model Project {
+  id             String   @id @default(cuid())
+  userId         String?
+  analysisId     String   @unique
+  analysis       Analysis @relation(fields: [analysisId], references: [id], onDelete: Cascade)
+  name           String
+  status         String   @default("active")
+
+  signalContext  Json
+
+  agentOutputs   AgentOutput[]
+  connectors     ProjectConnector[]
+
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model ProjectConnector {
+  id          String   @id @default(cuid())
+  projectId   String
+  project     Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  type        String
+  status      String   @default("disconnected")
+  config      Json?
+  connectedAt DateTime?
+
+  @@unique([projectId, type])
+}
+
+model AgentOutput {
+  id          String    @id @default(cuid())
+  projectId   String
+  project     Project   @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  agentType   String
+  status      String    @default("idle")
+  output      Json?
+  preview     String?
+  startedAt   DateTime?
+  completedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@unique([projectId, agentType])
+  @@index([projectId])
 }
 
 enum Verdict {
@@ -159,4 +207,21 @@ model AffiliateClick {
   createdAt  DateTime @default(now())
   converted  Boolean  @default(false)
   @@index([toolName])
+}
+
+model LeaderboardCache {
+  id        String   @id @default(cuid())
+  date      String   @unique
+  entries   Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ContentDraft {
+  id         String   @id @default(cuid())
+  type       String
+  content    Json
+  analysisId String?
+  status     String   @default("pending_review")
+  createdAt  DateTime @default(now())
 }

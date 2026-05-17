@@ -1,4 +1,30 @@
+import type { Prisma, TargetType, Verdict } from "@prisma/client";
 import prisma from "@/lib/prisma";
+
+type CompletedDecision = {
+  bestIdea?: unknown;
+  verdict?: Verdict;
+  confidence?: number;
+  reasoning?: string;
+  skipReasons?: unknown;
+  validationPlan?: unknown;
+  mvpScope?: unknown;
+  scores?: {
+    demand?: number;
+    founderFit?: number;
+    crowdedness?: number;
+    wtp?: number;
+    gtmFit?: number;
+    buildComplexity?: number;
+    speedToRevenue?: number;
+    moat?: number;
+    platformRisk?: number;
+  };
+};
+
+function toInputJson(value: unknown): Prisma.InputJsonValue {
+  return JSON.parse(JSON.stringify(value ?? null)) as Prisma.InputJsonValue;
+}
 
 export function parseInput(input: string, inputType: string): string {
   if (inputType === "github_repo") {
@@ -10,17 +36,19 @@ export function parseInput(input: string, inputType: string): string {
 }
 
 export async function checkRateLimit(userId: string): Promise<boolean> {
+  void userId;
   // Simple check for now
   return true;
 }
 
-export async function checkAnalysisCache(identifier: string, type: any) {
+export async function checkAnalysisCache(identifier: string, type: TargetType) {
   const target = await prisma.signalTarget.findUnique({
     where: { type_identifier: { type, identifier } },
     include: {
       analyses: {
         orderBy: { createdAt: "desc" },
-        take: 1
+        take: 1,
+        include: { target: true },
       }
     }
   });
@@ -69,28 +97,31 @@ export async function saveCompletedAnalysis({
   rawInput,
   topIdeas,
   decision,
-  creditCost
+  creditCost,
+  signalsRaw,
 }: {
   userId: string;
   targetId: string;
   rawInput: string;
-  topIdeas: any[];
-  decision?: any;
+  topIdeas: unknown[];
+  decision?: CompletedDecision;
   creditCost: number;
+  signalsRaw?: unknown;
 }) {
   return await prisma.analysis.create({
     data: {
       user: userId ? { connect: { id: userId } } : undefined,
       target: targetId ? { connect: { id: targetId } } : undefined,
       rawInput,
-      topIdeas: topIdeas as any,
-      bestIdea: decision?.bestIdea as any,
-      verdict: decision?.verdict as any,
+      topIdeas: toInputJson(topIdeas),
+      signalsRaw: toInputJson(signalsRaw),
+      bestIdea: toInputJson(decision?.bestIdea),
+      verdict: decision?.verdict,
       confidence: decision?.confidence,
       verdictReasoning: decision?.reasoning,
-      skipReasons: decision?.skipReasons as any,
-      validationPlan: decision?.validationPlan as any,
-      mvpScope: decision?.mvpScope as any,
+      skipReasons: toInputJson(decision?.skipReasons),
+      validationPlan: toInputJson(decision?.validationPlan),
+      mvpScope: toInputJson(decision?.mvpScope),
       demandScore: decision?.scores?.demand,
       founderFitScore: decision?.scores?.founderFit,
       crowdednessScore: decision?.scores?.crowdedness,
@@ -101,6 +132,7 @@ export async function saveCompletedAnalysis({
       moatScore: decision?.scores?.moat,
       platformRisk: decision?.scores?.platformRisk,
       creditsCost: creditCost,
+      isPublic: true,
     }
   });
 }

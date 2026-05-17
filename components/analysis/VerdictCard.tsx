@@ -52,8 +52,9 @@ export function VerdictCard({ verdict }: VerdictCardProps) {
                 {verdict.targetName ?? verdict.bestIdea.name} · Signal score{" "}
                 {verdict.signalScoreTotal?.toFixed(1) ?? "0.0"} / 12
               </p>
-              <h2 className="mt-2 font-heading text-3xl uppercase tracking-tight text-ink">
-                {verdict.bestIdea.name}
+              <h2 className="mt-2 font-heading text-4xl uppercase tracking-tight text-ink">
+                {verdict.verdict === "BUILD" ? "Build this:" : verdict.verdict === "SKIP" ? "Do not build:" : "Watch this:"}{" "}
+                <span className="text-action">{verdict.bestIdea.name}</span>
               </h2>
             </div>
 
@@ -117,7 +118,7 @@ export function VerdictCard({ verdict }: VerdictCardProps) {
 
         <div className="mb-5 border-b border-[#E8E4DD] pb-5">
           <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.18em] text-ink/40">
-            Why Not The Others
+            Why Not The Others / Wrong Work To Skip
           </p>
 
           <div className="space-y-2">

@@ -15,6 +15,57 @@ export interface TopIdea {
   roughPricing: string
   buildWeeks: number
   skipRisk: string
+
+  marketGap?: string
+  pricingTiers?: Array<{ name: string; price: string; description: string }>
+  revenueEstimate?: string
+  competition?: Array<{ name: string; price: string; weakness: string }>
+  buildNotes?: string
+  claudePrompts?: Array<{ title: string; prompt: string }>
+  firstCustomerPath?: string
+  outreachTemplate?: string
+
+  narrative?: string
+  whyNow?: {
+    score: number
+    factors: Array<{ name: string; score: number; explanation: string }>
+  }
+  scores?: {
+    opportunity?: { score: number; summary: string; breakdown?: Record<string, number> }
+    problem?: {
+      score: number
+      painType?: "Acute" | "Chronic" | "Latent"
+      trend?: "Increasing" | "Stable" | "Decreasing"
+      keyPainPoints?: string[]
+      marketEvidence?: Array<{ source: string; evidence: string }>
+    }
+    feasibility?: { score: number; complexity: string; summary: string }
+    whyNow?: { score: number; summary: string }
+  }
+  businessFit?: {
+    revenuePotential?: {
+      tier: "$" | "$$" | "$$$"
+      arrEstimate: string
+      revenueExamples?: string[]
+      businessModels?: string[]
+      exampleCompanies?: string[]
+    }
+    executionDifficulty?: number
+    gtmFit?: number
+  }
+  categorization?: {
+    type?: string
+    market?: string
+    targetCustomer?: string
+    mainCompetitors?: string[]
+  }
+  skipRisks?: Array<{ severity: "HIGH" | "MEDIUM" | "LOW"; risk: string }>
+  communitySignals?: {
+    reddit?: string
+    hackerNews?: string
+    github?: string
+    twitter?: string
+  }
 }
 
 export async function generateTopIdeas(params: {

@@ -58,16 +58,20 @@ export async function proxy(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const isProtectedRoute = 
-    request.nextUrl.pathname.startsWith("/dashboard") || 
-    request.nextUrl.pathname.startsWith("/build-room");
+  const authRoutes = ["/login", "/signup"];
+  const protectedRoutes = ["/dashboard", "/onboarding", "/build-room"];
+  const isAuthRoute = authRoutes.some((route) => request.nextUrl.pathname.startsWith(route));
+  const isProtectedRoute = protectedRoutes.some((route) => request.nextUrl.pathname.startsWith(route));
 
-  if (isProtectedRoute && !user) {
-    return NextResponse.redirect(new URL("/login", request.url));
+  if (user && isAuthRoute) {
+    const next = request.nextUrl.searchParams.get("next") || "/dashboard";
+    return NextResponse.redirect(new URL(next, request.url));
   }
 
-  if (request.nextUrl.pathname.startsWith("/login") && user) {
-    return NextResponse.redirect(new URL("/dashboard", request.url));
+  if (isProtectedRoute && !user) {
+    const loginUrl = new URL("/login", request.url);
+    loginUrl.searchParams.set("next", `${request.nextUrl.pathname}${request.nextUrl.search}`);
+    return NextResponse.redirect(loginUrl);
   }
 
   return response;
@@ -75,8 +79,10 @@ export async function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/dashboard/:path*",
-    "/build-room/:path*",
-    "/login",
+    /*
+     * Match all request paths except static assets and optimized images.
+     * Next 16 uses proxy.ts instead of middleware.ts for this layer.
+     */
+    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
   ],
 };

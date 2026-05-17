@@ -9,6 +9,7 @@ import { detectAnalysisInputType } from "@/lib/analysis/input";
 
 type AnalysisInputProps = {
   onSubmit?: (input: string, tier: "free" | "paid") => void;
+  defaultValue?: string;
 };
 
 const DETECTION_LABELS = {
@@ -18,8 +19,8 @@ const DETECTION_LABELS = {
   domain_search: "Searching ecosystem...",
 } as const;
 
-export function AnalysisInput({ onSubmit }: AnalysisInputProps) {
-  const [input, setInput] = useState("");
+export function AnalysisInput({ onSubmit, defaultValue = "" }: AnalysisInputProps) {
+  const [input, setInput] = useState(defaultValue);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
@@ -46,7 +47,7 @@ export function AnalysisInput({ onSubmit }: AnalysisInputProps) {
       return;
     }
 
-    router.push(`/analyze?input=${encodeURIComponent(value)}&tier=free`);
+    router.push(`/analyze?q=${encodeURIComponent(value)}&tier=free`);
   };
 
   return (
